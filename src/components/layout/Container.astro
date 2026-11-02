@@ -1,46 +1,81 @@
 
 ---
 /*
- * FRONTMATTER:
- * Código que Astro ejecuta para preparar el componente.
- * TypeScript y JavaScript pueden utilizarse aquí.
+ * PROPS DEL COMPONENTE
+ *
+ * Definimos las propiedades que puede recibir Container.
+ * Astro utilizará esta interfaz para comprobar los tipos
+ * durante el desarrollo.
  */
-
-// Define la forma de las propiedades que acepta el componente.
 interface Props {
-  // Propiedad opcional para añadir clases CSS personalizadas.
+  // Clases CSS adicionales que se aplicarán al contenedor.
   class?: string;
+
+  /*
+   * Tamaño máximo del contenedor.
+   *
+   * Utilizamos una unión de literales de TypeScript para
+   * limitar las opciones a los cinco tamaños definidos.
+   */
+  size?: "sm" | "md" | "lg" | "xl" | "2xl";
 }
 
-// Extraemos "class" de las propiedades recibidas y la renombramos.
-// El operador REST (...attributes) reúne las propiedades restantes.
-const { class: className, ...attributes } = Astro.props;
+/*
+ * RECUPERACIÓN DE PROPIEDADES
+ *
+ * Extraemos:
+ * - class: clases adicionales.
+ * - size: tamaño seleccionado, 2xl por defecto.
+ * - attributes: cualquier otra propiedad HTML recibida.
+ */
+const {
+  class: className,
+  size = "2xl",
+  ...attributes
+} = Astro.props;
+
+/*
+ * CONFIGURACIÓN DE ANCHOS
+ *
+ * Relacionamos cada tamaño disponible con una clase de Tailwind.
+ *
+ * "as const" permite que TypeScript conserve los valores
+ * literales de este objeto en lugar de generalizarlos a string.
+ *
+ * Todas las clases están escritas literalmente para que
+ * Tailwind CSS pueda detectarlas durante la compilación.
+ */
+const sizeClasses = {
+  sm: "max-w-3xl",
+  md: "max-w-4xl",
+  lg: "max-w-5xl",
+  xl: "max-w-6xl",
+  "2xl": "max-w-7xl",
+} as const;
 ---
 
 <!--
-  Elemento contenedor.
-  class:list es una directiva de Astro que compone el atributo class.
+  CONTENEDOR PRINCIPAL
+
+  class:list combina:
+  1. Las clases estructurales comunes.
+  2. El ancho máximo seleccionado.
+  3. Las clases personalizadas recibidas.
+
+  {...attributes} distribuye los atributos HTML adicionales.
 -->
 <div
   class:list={[
-    // Clases base: centrar, ocupar el ancho disponible y limitarlo.
-    "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
-
-    // Clases adicionales proporcionadas al utilizar el componente.
+    "mx-auto w-full px-4 sm:px-6 lg:px-8",
+    sizeClasses[size],
     className
   ]}
   {...attributes}
 >
   <!--
-    Astro inserta aquí los elementos que se escriban dentro de
-    <Container>...</Container>.
+    SLOT:
+    Aquí Astro inserta el contenido que envuelve
+    al componente Container.
   -->
   <slot />
 </div>
-
-<!-- max-w-7xl: limita el ancho máximo del contenido.
-mx-auto: centra el contenedor horizontalmente.
-px-4 sm:px-6 lg:px-8: ajusta el espacio lateral según el tamaño de pantalla.
-class: permite añadir clases adicionales cuando un proyecto lo necesite.
-...attributes: permite pasar atributos HTML adicionales, como id o aria-label.
-<slot />: permite insertar cualquier contenido dentro del contenedor. -->
