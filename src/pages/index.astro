@@ -1,35 +1,123 @@
-
 ---
-import '../styles/global.css';
+/*
+ * Importamos nuestro componente Container.
+ *
+ * La ruta es relativa a src/pages/index.astro:
+ * ../ sube a src/ y después entramos en components/layout/.
+ */
+import Container from "../components/layout/Container.astro";
+
+/*
+ * Importamos los estilos globales del proyecto.
+ * Aquí se cargan Tailwind CSS, los tokens y las fuentes locales.
+ */
+import "../styles/global.css";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>VTAV Frontend — Tipografía</title>
-	</head>
+<!--
+  Esta sección ocupa todo el ancho disponible.
+  El fondo y el padding vertical pertenecen a la sección,
+  no al componente Container.
+-->
+<section class="bg-slate-100">
 
-	<body class="min-h-screen bg-slate-950 text-white antialiased">
-		<main class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center gap-12 px-6 py-16">
+  <!--
+    Container limita y centra el contenido.
+    Las clases adicionales ajustan el espacio vertical interno.
+  -->
+  <Container class="space-y-8 pt-16 sm:pt-24">
 
-			<header class="space-y-4">
-				<p class="font-accent text-xs uppercase tracking-[0.2em] text-cyan-400">
-					VTAV Frontend / Design System
-				</p>
+    <!-- Bloque introductorio de la página -->
+    <header class="space-y-4">
 
-				<h1 class="font-heading text-4xl font-bold tracking-tight sm:text-6xl">
-					Tres fuentes, una identidad.
-				</h1>
+      <!-- Texto auxiliar usando la fuente de acento -->
+      <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
+        V.T.A.V. - Frontend Boilerplate
+      </p>
 
-				<p class="max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg">
-					Una base tipográfica reutilizable para construir interfaces web consistentes,
-					accesibles y fáciles de mantener.
-				</p>
-			</header>
+      <!--
+        Título con nuestra fuente de encabezados.
+        text-balance mejora la distribución de las líneas.
+      -->
+      <h1 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl capitalize">
+        Construyendo una base reutilizable
+      </h1>
 
-			<section class="grid gap-6 md:grid-cols-3">
+      <!-- Texto descriptivo con nuestra fuente de cuerpo -->
+      <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
+        Una arquitectura frontend modular con Astro, Tailwind CSS
+        y tokens de diseño para futuros proyectos web.
+      </p>
+
+    </header>
+
+    <!--
+      Este bloque permite comprobar el ancho y el padding
+      del contenedor con un elemento visual adicional.
+    -->
+    <div class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm sm:p-8">
+
+      <h2 class="font-heading text-2xl font-bold text-slate-900">
+        Nuestro primer Container
+      </h2>
+
+      <p class="mt-3 font-body leading-relaxed text-slate-600">
+        El contenido está centrado y limitado por el ancho máximo
+        del componente. El padding lateral se adapta al viewport.
+      </p>
+
+      <!-- Etiquetas de comprobación visual -->
+      <div class="mt-6 flex flex-wrap gap-3">
+
+        <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
+          Astro
+        </span>
+
+        <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
+          Tailwind CSS v4
+        </span>
+
+        <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
+          Design tokens
+        </span>
+
+      </div>
+
+    </div>
+  </Container>
+  <Container class="space-y-8 pt-16 sm:pt-24">
+
+    <!-- Bloque introductorio de la página -->
+    <header class="space-y-4">
+
+      <!-- Texto auxiliar usando la fuente de acento -->
+      <p class="font-accent text-xs uppercase tracking-[0.2em] text-cyan-400">
+		VTAV Frontend / Design System
+	  </p>
+
+      <!--
+        Título con nuestra fuente de encabezados.
+        text-balance mejora la distribución de las líneas.
+      -->
+      <h1 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl capitalize">
+        Tres fuentes, una identidad.
+      </h1>
+
+      <!-- Texto descriptivo con nuestra fuente de cuerpo -->
+      <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
+        Una base tipográfica reutilizable para construir interfaces web consistentes,
+		accesibles y fáciles de mantener.
+      </p>
+
+    </header>
+
+    <!--
+      Este bloque permite comprobar el ancho y el padding
+      del contenedor con un elemento visual adicional.
+    -->
+    <div class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm sm:p-8">
+
+      <section class="grid gap-6 md:grid-cols-3">
 				<article class="rounded-2xl border border-white/10 bg-white/5 p-6">
 					<p class="mb-4 font-accent text-xs uppercase tracking-wider text-cyan-400">
 						01 / Heading
@@ -113,6 +201,6 @@ import '../styles/global.css';
 				</p>
 			</footer>
 
-		</main>
-	</body>
-</html>
+    </div>
+  </Container>
+</section>

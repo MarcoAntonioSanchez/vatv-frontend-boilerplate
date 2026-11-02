@@ -1,0 +1,46 @@
+
+---
+/*
+ * FRONTMATTER:
+ * Código que Astro ejecuta para preparar el componente.
+ * TypeScript y JavaScript pueden utilizarse aquí.
+ */
+
+// Define la forma de las propiedades que acepta el componente.
+interface Props {
+  // Propiedad opcional para añadir clases CSS personalizadas.
+  class?: string;
+}
+
+// Extraemos "class" de las propiedades recibidas y la renombramos.
+// El operador REST (...attributes) reúne las propiedades restantes.
+const { class: className, ...attributes } = Astro.props;
+---
+
+<!--
+  Elemento contenedor.
+  class:list es una directiva de Astro que compone el atributo class.
+-->
+<div
+  class:list={[
+    // Clases base: centrar, ocupar el ancho disponible y limitarlo.
+    "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
+
+    // Clases adicionales proporcionadas al utilizar el componente.
+    className
+  ]}
+  {...attributes}
+>
+  <!--
+    Astro inserta aquí los elementos que se escriban dentro de
+    <Container>...</Container>.
+  -->
+  <slot />
+</div>
+
+<!-- max-w-7xl: limita el ancho máximo del contenido.
+mx-auto: centra el contenedor horizontalmente.
+px-4 sm:px-6 lg:px-8: ajusta el espacio lateral según el tamaño de pantalla.
+class: permite añadir clases adicionales cuando un proyecto lo necesite.
+...attributes: permite pasar atributos HTML adicionales, como id o aria-label.
+<slot />: permite insertar cualquier contenido dentro del contenedor. -->
