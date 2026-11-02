@@ -1,49 +1,47 @@
-
 ---
 /*
  * PROPS DEL COMPONENTE
  *
  * Definimos las propiedades que puede recibir Container.
- * Astro utilizará esta interfaz para comprobar los tipos
- * durante el desarrollo.
  */
 interface Props {
-  // Clases CSS adicionales que se aplicarán al contenedor.
+  // Clases CSS adicionales.
   class?: string;
 
   /*
-   * Tamaño máximo del contenedor.
-   *
-   * Utilizamos una unión de literales de TypeScript para
-   * limitar las opciones a los cinco tamaños definidos.
+   * Ancho máximo del contenedor.
+   * Solo tiene efecto cuando width es "boxed".
    */
   size?: "sm" | "md" | "lg" | "xl" | "2xl";
+
+  /*
+   * Modo de visualización:
+   * - boxed: contenido centrado y limitado.
+   * - full: ocupa todo el ancho disponible.
+   */
+  width?: "boxed" | "full";
 }
 
 /*
  * RECUPERACIÓN DE PROPIEDADES
  *
- * Extraemos:
  * - class: clases adicionales.
- * - size: tamaño seleccionado, 2xl por defecto.
- * - attributes: cualquier otra propiedad HTML recibida.
+ * - size: 2xl por defecto.
+ * - width: boxed por defecto.
+ * - attributes: cualquier otro atributo HTML recibido.
  */
 const {
   class: className,
   size = "2xl",
+  width = "boxed",
   ...attributes
 } = Astro.props;
 
 /*
  * CONFIGURACIÓN DE ANCHOS
  *
- * Relacionamos cada tamaño disponible con una clase de Tailwind.
- *
- * "as const" permite que TypeScript conserve los valores
- * literales de este objeto en lugar de generalizarlos a string.
- *
- * Todas las clases están escritas literalmente para que
- * Tailwind CSS pueda detectarlas durante la compilación.
+ * Relacionamos cada tamaño con su clase de Tailwind.
+ * "as const" conserva los valores literales para TypeScript.
  */
 const sizeClasses = {
   sm: "max-w-3xl",
@@ -52,30 +50,51 @@ const sizeClasses = {
   xl: "max-w-6xl",
   "2xl": "max-w-7xl",
 } as const;
+
+/*
+ * CONFIGURACIÓN DEL MODO DE ANCHO
+ *
+ * Ambos modos mantienen:
+ * - w-full: ocupan el ancho disponible.
+ * - Padding horizontal responsive.
+ *
+ * El modo boxed añade:
+ * - mx-auto: centra el contenedor.
+ * - max-width: limita su crecimiento.
+ *
+ * El modo full no establece un ancho máximo.
+ */
+const widthClasses = {
+  boxed: "mx-auto",
+  full: "",
+} as const;
+
+/*
+ * CLASES FINALES
+ *
+ * El tamaño máximo solo se aplica al modo boxed.
+ * En modo full se omite para permitir ocupar todo el ancho.
+ */
+const containerClasses = [
+  "w-full px-4 sm:px-6 lg:px-8",
+  widthClasses[width],
+  width === "boxed" ? sizeClasses[size] : "",
+  className,
+];
 ---
 
 <!--
   CONTENEDOR PRINCIPAL
 
-  class:list combina:
-  1. Las clases estructurales comunes.
-  2. El ancho máximo seleccionado.
-  3. Las clases personalizadas recibidas.
+  class:list combina las clases estructurales,
+  el modo de ancho y las clases personalizadas.
 
   {...attributes} distribuye los atributos HTML adicionales.
 -->
 <div
-  class:list={[
-    "mx-auto w-full px-4 sm:px-6 lg:px-8",
-    sizeClasses[size],
-    className
-  ]}
+  class:list={containerClasses}
   {...attributes}
 >
-  <!--
-    SLOT:
-    Aquí Astro inserta el contenido que envuelve
-    al componente Container.
-  -->
+  <!-- Aquí Astro inserta el contenido del componente. -->
   <slot />
 </div>
