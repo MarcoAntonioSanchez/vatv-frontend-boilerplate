@@ -1,5 +1,13 @@
 ---
+import { ref } from "vue";
+
 import { Icon } from "astro-icon/components";
+
+import Button from "../components/ui/Button.vue";
+import ButtonLoadingDemo from "../components/ui/ButtonLoadingDemo.vue";
+import ButtonEventsDemo from "../components/ui/ButtonEventsDemo.vue";
+import ButtonFormDemo from "../components/ui/ButtonFormDemo.vue";
+
 import Layout from "../layouts/Layout.astro";
 
 /*
@@ -1041,4 +1049,99 @@ import "../styles/global.css";
       </footer>
     </Container>
   </section>
+
+  <!-- Button component demonstrations -->
+  <Container size="2xl">
+    <!-- Basic variants and states -->
+    <section class="border-b border-border py-12">
+      <h2 class="font-heading text-h2 mb-6">Button Component</h2>
+
+      <div class="flex flex-wrap items-center gap-6">
+        <Button client:load>Explorar proyectos</Button>
+
+        <Button client:load>
+          Explorar proyectos
+          <Icon slot="icon" name="tabler:arrow-up-right" class="size-5" />
+        </Button>
+
+        <Button client:load iconPosition="left">
+          Volver
+          <Icon slot="icon" name="tabler:arrow-left" class="size-5" />
+        </Button>
+
+        <Button client:load href="/#top">
+          Ir al inicio
+        </Button>
+
+        <Button client:load iconOnHover>
+          Explorar proyectos
+          <Icon slot="icon" name="tabler:arrow-up-right" class="size-5" />
+        </Button>
+
+        <Button client:load disabled>
+          No disponible
+        </Button>
+
+        <Button client:load loading>
+          Guardar cambios
+        </Button>
+
+        <Button client:load href="/destino" disabled>
+          Enlace no disponible
+        </Button>
+
+        <ButtonLoadingDemo client:load />
+      </div>
+    </section>
+
+    <!-- Click events -->
+    <section class="border-b border-border py-12">
+      <h2 class="font-heading text-h2 mb-6">Button Events</h2>
+
+      <ButtonEventsDemo client:load />
+    </section>
+
+    <!-- Form integration -->
+    <section class="border-b border-border py-12">
+      <h2 class="font-heading text-h2 mb-6">Button Form Integration</h2>
+
+      <ButtonFormDemo client:load />
+    </section>
+
+    <!-- Native navigation behavior -->
+    <section class="py-12">
+      <h2 class="font-heading text-h2 mb-6">Button Navigation</h2>
+
+      <div class="flex flex-wrap items-center gap-6">
+        <Button
+          client:load
+          href="https://example.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="solid"
+        >
+          Abrir nueva pestaña
+          <Icon slot="icon" name="tabler:external-link" class="size-5" />
+        </Button>
+
+        <Button
+          client:load
+          href="https://example.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          disabled
+          variant="outline"
+        >
+          Enlace bloqueado
+          <Icon slot="icon" name="tabler:lock" class="size-5" />
+        </Button>
+      </div>
+
+      <p class="mt-4 text-body-sm text-text-muted">
+        El primer enlace debe abrir example.com en una pestaña nueva. El segundo
+        debe permanecer inaccesible, incluso mediante el menú contextual del
+        navegador.
+      </p>
+    </section>
+  </Container>
 </Layout>
