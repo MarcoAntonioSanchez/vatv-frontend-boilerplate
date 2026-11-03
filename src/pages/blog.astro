@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+// Recupera los artículos publicados de la colección blog.
+const posts = await getCollection("blog", ({ data }) => {
+  return !data.draft;
+});
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Blog | VTAV</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Blog</h1>
+
+      {posts.map((post) => (
+        <article>
+          <h2>{post.data.title}</h2>
+          <p>{post.data.description}</p>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString("es-MX")}
+          </time>
+        </article>
+      ))}
+    </main>
+  </body>
+</html>
