@@ -1,10 +1,18 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
-// Recupera los artículos publicados de la colección blog.
+// Recupera los artículos publicados.
 const posts = await getCollection("blog", ({ data }) => {
   return !data.draft;
 });
+
+// Prepara el contenido Markdown para su renderizado.
+const renderedPosts = await Promise.all(
+  posts.map(async (post) => ({
+    post,
+    rendered: await render(post),
+  })),
+);
 ---
 
 <html lang="es">
@@ -18,13 +26,20 @@ const posts = await getCollection("blog", ({ data }) => {
     <main>
       <h1>Blog</h1>
 
-      {posts.map((post) => (
+      {renderedPosts.map(({ post, rendered }) => (
         <article>
           <h2>{post.data.title}</h2>
           <p>{post.data.description}</p>
+
           <time datetime={post.data.pubDate.toISOString()}>
             {post.data.pubDate.toLocaleDateString("es-MX")}
           </time>
+
+          <hr />
+
+          <div>
+            <rendered.Content />
+          </div>
         </article>
       ))}
     </main>

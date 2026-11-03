@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/layout/Container.astro";
+
+import AuthDemo from "../modules/auth/components/AuthDemo.vue";
+---
+
+<Layout title="Iniciar sesión | VTAV">
+  <main class="min-h-[70vh] bg-background py-16">
+    <Container size="2xl">
+      <section class="mx-auto max-w-md space-y-8">
+        <header class="space-y-2 text-center">
+          <p class="font-accent text-caption uppercase tracking-wider text-primary">
+            VTAV Authentication
+          </p>
+
+          <h1 class="font-heading text-h1 text-text">Auth Demo</h1>
+
+          <p class="text-body text-text-muted">
+            Demostración del módulo de autenticación local.
+          </p>
+        </header>
+
+        <AuthDemo client:load />
+
+        <p class="text-center text-caption text-text-muted">
+          Credenciales demo: demo@vtav.dev / vtav-demo
+        </p>
+      </section>
+    </Container>
+  </main>
+</Layout>

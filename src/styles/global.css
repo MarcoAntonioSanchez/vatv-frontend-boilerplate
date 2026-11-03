@@ -1,3 +1,7 @@
 @import "tailwindcss";
+
+/* Detecta las clases Tailwind utilizadas en los módulos Vue. */
+@source "../modules";
+
 @import "./tokens.css";
 @import "./fonts.css";

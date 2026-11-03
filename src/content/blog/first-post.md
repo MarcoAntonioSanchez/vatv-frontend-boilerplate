@@ -2,7 +2,7 @@
 title: "Mi primer artículo"
 description: "Artículo de demostración para validar Astro Content Collections en VTAV."
 pubDate: 2026-11-03
-draft: true
+draft: false
 ---
 
 # Mi primer artículo
