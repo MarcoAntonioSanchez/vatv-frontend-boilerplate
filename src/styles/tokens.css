@@ -3,3 +3,140 @@
   --font-heading: "Ubuntu", sans-serif;
   --font-accent: "JetBrains Mono", monospace;
 }
+
+/*
+ * =========================================================
+ * DESIGN TOKENS — VTAV FRONTEND
+ * =========================================================
+ *
+ * Sistema de diseño neutral.
+ */
+
+/*
+ * 1. TEMA CLARO
+ */
+:root {
+  color-scheme: light;
+
+  /* Brand */
+  --color-primary: #3157d5;
+  --color-primary-hover: #2546b8;
+  --color-primary-active: #1e3a8a;
+
+  --color-secondary: #64748b;
+  --color-secondary-hover: #475569;
+  --color-secondary-active: #334155;
+
+  --color-accent: #7c3aed;
+
+  /* Backgrounds */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f5f9;
+
+  /* Text */
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-disabled: #94a3b8;
+
+  /* Borders */
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Links */
+  --color-link: #2563eb;
+  --color-link-hover: #1d4ed8;
+
+  /* Feedback */
+  --color-success: #15803d;
+  --color-warning: #a16207;
+  --color-danger: #dc2626;
+  --color-info: #0369a1;
+}
+
+/*
+ * 2. TEMA OSCURO — OBSIDIAN
+ *
+ * Base neutral de alto contraste.
+ * Estética oscura, minimalista y premium.
+ */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Brand */
+  --color-primary: #e5e5e5;
+  --color-primary-hover: #ffffff;
+  --color-primary-active: #d4d4d4;
+
+  --color-secondary: #a3a3a3;
+  --color-secondary-hover: #d4d4d4;
+  --color-secondary-active: #737373;
+
+  --color-accent: #c4b5fd;
+
+  /* Backgrounds */
+  --color-background: #090909;
+  --color-surface: #111111;
+  --color-surface-muted: #1a1a1a;
+
+  /* Text */
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-text-disabled: #666666;
+
+  /* Borders */
+  --color-border: #292929;
+  --color-border-strong: #383838;
+
+  /* Links */
+  --color-link: #d4d4d4;
+  --color-link-hover: #ffffff;
+
+  /* Feedback */
+  --color-success: #4ade80;
+  --color-warning: #facc15;
+  --color-danger: #f87171;
+  --color-info: #38bdf8;
+}
+
+/*
+ * 3. TAILWIND CSS V4
+ *
+ * Conectamos los tokens semánticos con las utilidades.
+ */
+@theme inline {
+  /* Brand */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-active: var(--color-primary-active);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-active: var(--color-secondary-active);
+
+  --color-accent: var(--color-accent);
+
+  /* Backgrounds */
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-muted: var(--color-surface-muted);
+
+  /* Text */
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-disabled: var(--color-text-disabled);
+
+  /* Borders */
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  /* Links */
+  --color-link: var(--color-link);
+  --color-link-hover: var(--color-link-hover);
+
+  /* Feedback */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+}

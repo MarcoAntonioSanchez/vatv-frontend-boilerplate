@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 
 /*
@@ -18,597 +19,783 @@ import "../styles/global.css";
 ---
 
 <Layout title="VTAV Frontend | Inicio">
-
   <!-- ============================================================
      SECCIÓN 01: PRESENTACIÓN DEL BOILERPLATE
      ============================================================ -->
 
-<section class="bg-slate-100">
+  <section class="bg-slate-100">
+    <Container class="space-y-8 py-16 sm:py-24">
+      <!-- Encabezado de la demostración -->
+      <header class="space-y-4">
+        <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
+          V.T.A.V. - Frontend Boilerplate
+        </p>
 
-  <Container class="space-y-8 py-16 sm:py-24">
+        <h1 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl">
+          Construyendo una base reutilizable
+        </h1>
 
-    <!-- Encabezado de la demostración -->
-    <header class="space-y-4">
+        <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
+          Una arquitectura frontend modular con Astro, Tailwind CSS y tokens de
+          diseño para futuros proyectos web.
+        </p>
+      </header>
 
-      <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
-        V.T.A.V. - Frontend Boilerplate
-      </p>
+      <!-- Tarjeta de demostración -->
+      <div class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm sm:p-8">
+        <h2 class="font-heading text-2xl font-bold text-slate-900">
+          Nuestro primer Container
+        </h2>
 
-      <h1 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl">
-        Construyendo una base reutilizable
-      </h1>
+        <p class="mt-3 font-body leading-relaxed text-slate-600">
+          El contenido está centrado y limitado por el ancho máximo del
+          componente. El padding lateral se adapta al viewport.
+        </p>
 
-      <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
-        Una arquitectura frontend modular con Astro, Tailwind CSS
-        y tokens de diseño para futuros proyectos web.
-      </p>
+        <!-- Etiquetas técnicas -->
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
+            Astro
+          </span>
 
-    </header>
+          <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
+            Tailwind CSS v4
+          </span>
 
-    <!-- Tarjeta de demostración -->
-    <div class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm sm:p-8">
-
-      <h2 class="font-heading text-2xl font-bold text-slate-900">
-        Nuestro primer Container
-      </h2>
-
-      <p class="mt-3 font-body leading-relaxed text-slate-600">
-        El contenido está centrado y limitado por el ancho máximo
-        del componente. El padding lateral se adapta al viewport.
-      </p>
-
-      <!-- Etiquetas técnicas -->
-      <div class="mt-6 flex flex-wrap gap-3">
-
-        <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
-          Astro
-        </span>
-
-        <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
-          Tailwind CSS v4
-        </span>
-
-        <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
-          Design tokens
-        </span>
-
+          <span class="rounded-full bg-slate-100 px-3 py-1 font-accent text-xs text-slate-700">
+            Design tokens
+          </span>
+        </div>
       </div>
+    </Container>
+  </section>
 
-    </div>
-
-  </Container>
-
-</section>
-
-
-<!-- ============================================================
+  <!-- ============================================================
      SECCIÓN 02: SISTEMA TIPOGRÁFICO
      ============================================================ -->
 
-<section class="bg-slate-100">
-
-  <Container class="space-y-8 py-16 sm:py-24">
-
-    <!-- Encabezado de la demostración -->
-    <header class="space-y-4">
-
-      <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
-        VTAV Frontend / Design System
-      </p>
-
-      <h2 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl">
-        Tres fuentes, una identidad.
-      </h2>
-
-      <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
-        Una base tipográfica reutilizable para construir interfaces web consistentes,
-        accesibles y fáciles de mantener.
-      </p>
-
-    </header>
-
-    <!-- Tarjeta de demostración tipográfica -->
-    <div class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm sm:p-8">
-
-      <div class="grid gap-6 md:grid-cols-3">
-
-        <!-- 01. HEADING / UBUNTU -->
-        <article class="rounded-xl border border-slate-200 bg-slate-50 p-6">
-
-          <p class="mb-4 font-accent text-xs uppercase tracking-wider text-slate-600">
-            01 / Heading
-          </p>
-
-          <h3 class="font-heading text-2xl font-bold text-slate-900">
-            Ubuntu
-          </h3>
-
-          <p class="mt-3 font-body text-sm leading-6 text-slate-600">
-            Medium y Bold para títulos, subtítulos y jerarquías visuales.
-          </p>
-
-          <p class="mt-6 font-heading font-medium text-slate-900">
-            Medium 500
-          </p>
-
-          <p class="mt-2 font-heading font-bold text-slate-900">
-            Bold 700
-          </p>
-
-        </article>
-
-
-        <!-- 02. BODY / INTER -->
-        <article class="rounded-xl border border-slate-200 bg-slate-50 p-6">
-
-          <p class="mb-4 font-accent text-xs uppercase tracking-wider text-slate-600">
-            02 / Body
-          </p>
-
-          <h3 class="font-body text-2xl font-bold text-slate-900">
-            Inter Variable
-          </h3>
-
-          <p class="mt-3 font-body text-sm leading-6 text-slate-600">
-            Una familia variable para párrafos, descripciones y contenido general.
-          </p>
-
-          <p class="mt-6 font-body font-normal text-slate-900">
-            Regular 400
-          </p>
-
-          <p class="mt-2 font-body font-medium text-slate-900">
-            Medium 500
-          </p>
-
-          <p class="mt-2 font-body font-bold text-slate-900">
-            Bold 700
-          </p>
-
-        </article>
-
-
-        <!-- 03. ACCENT / JETBRAINS MONO -->
-        <article class="rounded-xl border border-slate-200 bg-slate-50 p-6">
-
-          <p class="mb-4 font-accent text-xs uppercase tracking-wider text-slate-600">
-            03 / Accent
-          </p>
-
-          <h3 class="font-accent text-xl font-bold text-slate-900">
-            JetBrains Mono
-          </h3>
-
-          <p class="mt-3 font-body text-sm leading-6 text-slate-600">
-            Una fuente monoespaciada para etiquetas, metadatos y detalles técnicos.
-          </p>
-
-          <div class="mt-6 flex flex-wrap gap-2">
-
-            <span class="rounded-md border border-slate-300 bg-white px-3 py-1 font-accent text-xs text-slate-700">
-              BETA
-            </span>
-
-            <span class="rounded-md border border-slate-300 bg-white px-3 py-1 font-accent text-xs text-slate-700">
-              v1.0.0
-            </span>
-
-          </div>
-
-          <p class="mt-4 font-accent text-sm text-slate-700">
-            0123456789 / &#123; &#125; / &lt;/&gt;
-          </p>
-
-        </article>
-
-      </div>
-
-      <!-- Pie de la demostración -->
-      <footer class="mt-8 border-t border-slate-200 pt-6">
-
-        <p class="font-body text-sm text-slate-500">
-          Prueba tipográfica · Astro + Tailwind CSS v4
+  <section class="bg-slate-100">
+    <Container class="space-y-8 py-16 sm:py-24">
+      <!-- Encabezado de la demostración -->
+      <header class="space-y-4">
+        <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
+          VTAV Frontend / Design System
         </p>
 
-      </footer>
+        <h2 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl">
+          Tres fuentes, una identidad.
+        </h2>
 
-    </div>
+        <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
+          Una base tipográfica reutilizable para construir interfaces web
+          consistentes, accesibles y fáciles de mantener.
+        </p>
+      </header>
 
-  </Container>
+      <!-- Tarjeta de demostración tipográfica -->
+      <div class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm sm:p-8">
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- 01. HEADING / UBUNTU -->
+          <article class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+            <p class="mb-4 font-accent text-xs uppercase tracking-wider text-slate-600">
+              01 / Heading
+            </p>
 
-</section>
+            <h3 class="font-heading text-2xl font-bold text-slate-900">
+              Ubuntu
+            </h3>
 
+            <p class="mt-3 font-body text-sm leading-6 text-slate-600">
+              Medium y Bold para títulos, subtítulos y jerarquías visuales.
+            </p>
 
-<!-- ============================================================
+            <p class="mt-6 font-heading font-medium text-slate-900">
+              Medium 500
+            </p>
+
+            <p class="mt-2 font-heading font-bold text-slate-900">Bold 700</p>
+          </article>
+
+          <!-- 02. BODY / INTER -->
+          <article class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+            <p class="mb-4 font-accent text-xs uppercase tracking-wider text-slate-600">
+              02 / Body
+            </p>
+
+            <h3 class="font-body text-2xl font-bold text-slate-900">
+              Inter Variable
+            </h3>
+
+            <p class="mt-3 font-body text-sm leading-6 text-slate-600">
+              Una familia variable para párrafos, descripciones y contenido
+              general.
+            </p>
+
+            <p class="mt-6 font-body font-normal text-slate-900">Regular 400</p>
+
+            <p class="mt-2 font-body font-medium text-slate-900">Medium 500</p>
+
+            <p class="mt-2 font-body font-bold text-slate-900">Bold 700</p>
+          </article>
+
+          <!-- 03. ACCENT / JETBRAINS MONO -->
+          <article class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+            <p class="mb-4 font-accent text-xs uppercase tracking-wider text-slate-600">
+              03 / Accent
+            </p>
+
+            <h3 class="font-accent text-xl font-bold text-slate-900">
+              JetBrains Mono
+            </h3>
+
+            <p class="mt-3 font-body text-sm leading-6 text-slate-600">
+              Una fuente monoespaciada para etiquetas, metadatos y detalles
+              técnicos.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="rounded-md border border-slate-300 bg-white px-3 py-1 font-accent text-xs text-slate-700">
+                BETA
+              </span>
+
+              <span class="rounded-md border border-slate-300 bg-white px-3 py-1 font-accent text-xs text-slate-700">
+                v1.0.0
+              </span>
+            </div>
+
+            <p class="mt-4 font-accent text-sm text-slate-700">
+              0123456789 / &#123; &#125; / &lt;/&gt;
+            </p>
+          </article>
+        </div>
+
+        <!-- Pie de la demostración -->
+        <footer class="mt-8 border-t border-slate-200 pt-6">
+          <p class="font-body text-sm text-slate-500">
+            Prueba tipográfica · Astro + Tailwind CSS v4
+          </p>
+        </footer>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ============================================================
      SECCIÓN 03: CONTAINER / SISTEMA DE ANCHOS
      ============================================================ -->
 
-<section class="bg-slate-100">
-
-  <!--
+  <section class="bg-slate-100">
+    <!--
     Esta sección utiliza el modo full-width.
     Su contenido interior podrá alcanzar los anchos configurados
     sin quedar limitado por un Container padre boxed.
   -->
-  <Container width="full" class="space-y-8 py-16 sm:py-24">
+    <Container width="full" class="space-y-8 py-16 sm:py-24">
+      <!-- Encabezado de la demostración -->
+      <header class="mx-auto w-full max-w-7xl space-y-4 px-4 sm:px-6 lg:px-8">
+        <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
+          VTAV Frontend / Layout Components
+        </p>
 
-    <!-- Encabezado de la demostración -->
-    <header class="mx-auto w-full max-w-7xl space-y-4 px-4 sm:px-6 lg:px-8">
+        <h2 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl">
+          Un contenedor, múltiples posibilidades.
+        </h2>
 
-      <p class="font-accent text-sm font-medium uppercase tracking-widest text-slate-600">
-        VTAV Frontend / Layout Components
-      </p>
+        <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
+          Container permite establecer diferentes anchos máximos para organizar
+          el contenido de cada proyecto, manteniendo el centrado y el padding
+          responsive.
+        </p>
+      </header>
 
-      <h2 class="font-heading text-4xl font-bold tracking-tight text-slate-950 text-balance sm:text-5xl">
-        Un contenedor, múltiples posibilidades.
-      </h2>
-
-      <p class="max-w-2xl font-body text-lg leading-relaxed text-slate-700">
-        Container permite establecer diferentes anchos máximos para
-        organizar el contenido de cada proyecto, manteniendo el centrado
-        y el padding responsive.
-      </p>
-
-    </header>
-
-
-    <!-- ========================================================
+      <!-- ========================================================
          DEMOSTRACIONES BOXED
          ======================================================== -->
 
-    <div class="space-y-8">
+      <div class="space-y-8">
+        <!-- 01. SIZE SM -->
+        <article class="space-y-3">
+          <Container width="full" class="space-y-3">
+            <header>
+              <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+                01 / Container size="sm"
+              </p>
 
-      <!-- 01. SIZE SM -->
-      <article class="space-y-3">
+              <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
+                Small · 48rem
+              </h3>
 
-        <Container width="full" class="space-y-3">
+              <p class="mt-1 font-body text-sm text-slate-600">
+                max-w-3xl · Ideal para contenido estrecho y textos de lectura.
+              </p>
+            </header>
+          </Container>
 
-          <header>
-            <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-              01 / Container size="sm"
+          <Container
+            size="sm"
+            class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm"
+          >
+            <p class="font-accent text-xs font-medium text-slate-600">
+              SIZE: SM
             </p>
 
-            <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
-              Small · 48rem
-            </h3>
+            <p class="mt-2 font-heading text-lg font-bold text-slate-900">
+              Contenido estrecho
+            </p>
 
             <p class="mt-1 font-body text-sm text-slate-600">
-              max-w-3xl · Ideal para contenido estrecho y textos de lectura.
+              Ancho máximo de 48rem.
             </p>
-          </header>
+          </Container>
+        </article>
 
-        </Container>
+        <!-- 02. SIZE MD -->
+        <article class="space-y-3">
+          <Container width="full" class="space-y-3">
+            <header>
+              <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+                02 / Container size="md"
+              </p>
 
-        <Container size="sm" class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
+              <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
+                Medium · 56rem
+              </h3>
 
-          <p class="font-accent text-xs font-medium text-slate-600">
-            SIZE: SM
-          </p>
+              <p class="mt-1 font-body text-sm text-slate-600">
+                max-w-4xl · Ideal para contenido de ancho intermedio.
+              </p>
+            </header>
+          </Container>
 
-          <p class="mt-2 font-heading text-lg font-bold text-slate-900">
-            Contenido estrecho
-          </p>
-
-          <p class="mt-1 font-body text-sm text-slate-600">
-            Ancho máximo de 48rem.
-          </p>
-
-        </Container>
-
-      </article>
-
-
-      <!-- 02. SIZE MD -->
-      <article class="space-y-3">
-
-        <Container width="full" class="space-y-3">
-
-          <header>
-            <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-              02 / Container size="md"
+          <Container
+            size="md"
+            class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm"
+          >
+            <p class="font-accent text-xs font-medium text-slate-600">
+              SIZE: MD
             </p>
 
-            <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
-              Medium · 56rem
-            </h3>
+            <p class="mt-2 font-heading text-lg font-bold text-slate-900">
+              Contenido mediano
+            </p>
 
             <p class="mt-1 font-body text-sm text-slate-600">
-              max-w-4xl · Ideal para contenido de ancho intermedio.
+              Ancho máximo de 56rem.
             </p>
-          </header>
+          </Container>
+        </article>
 
-        </Container>
+        <!-- 03. SIZE LG -->
+        <article class="space-y-3">
+          <Container width="full" class="space-y-3">
+            <header>
+              <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+                03 / Container size="lg"
+              </p>
 
-        <Container size="md" class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
+              <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
+                Large · 64rem
+              </h3>
 
-          <p class="font-accent text-xs font-medium text-slate-600">
-            SIZE: MD
-          </p>
+              <p class="mt-1 font-body text-sm text-slate-600">
+                max-w-5xl · Adecuado para secciones con mayor cantidad de
+                contenido.
+              </p>
+            </header>
+          </Container>
 
-          <p class="mt-2 font-heading text-lg font-bold text-slate-900">
-            Contenido mediano
-          </p>
-
-          <p class="mt-1 font-body text-sm text-slate-600">
-            Ancho máximo de 56rem.
-          </p>
-
-        </Container>
-
-      </article>
-
-
-      <!-- 03. SIZE LG -->
-      <article class="space-y-3">
-
-        <Container width="full" class="space-y-3">
-
-          <header>
-            <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-              03 / Container size="lg"
+          <Container
+            size="lg"
+            class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm"
+          >
+            <p class="font-accent text-xs font-medium text-slate-600">
+              SIZE: LG
             </p>
 
-            <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
-              Large · 64rem
-            </h3>
+            <p class="mt-2 font-heading text-lg font-bold text-slate-900">
+              Contenido amplio
+            </p>
 
             <p class="mt-1 font-body text-sm text-slate-600">
-              max-w-5xl · Adecuado para secciones con mayor cantidad de contenido.
+              Ancho máximo de 64rem.
             </p>
-          </header>
+          </Container>
+        </article>
 
-        </Container>
+        <!-- 04. SIZE XL -->
+        <article class="space-y-3">
+          <Container width="full" class="space-y-3">
+            <header>
+              <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+                04 / Container size="xl"
+              </p>
 
-        <Container size="lg" class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
+              <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
+                Extra Large · 72rem
+              </h3>
 
-          <p class="font-accent text-xs font-medium text-slate-600">
-            SIZE: LG
-          </p>
+              <p class="mt-1 font-body text-sm text-slate-600">
+                max-w-6xl · Para composiciones amplias y contenido en varias
+                columnas.
+              </p>
+            </header>
+          </Container>
 
-          <p class="mt-2 font-heading text-lg font-bold text-slate-900">
-            Contenido amplio
-          </p>
-
-          <p class="mt-1 font-body text-sm text-slate-600">
-            Ancho máximo de 64rem.
-          </p>
-
-        </Container>
-
-      </article>
-
-
-      <!-- 04. SIZE XL -->
-      <article class="space-y-3">
-
-        <Container width="full" class="space-y-3">
-
-          <header>
-            <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-              04 / Container size="xl"
+          <Container
+            size="xl"
+            class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm"
+          >
+            <p class="font-accent text-xs font-medium text-slate-600">
+              SIZE: XL
             </p>
 
-            <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
-              Extra Large · 72rem
-            </h3>
+            <p class="mt-2 font-heading text-lg font-bold text-slate-900">
+              Contenido extra amplio
+            </p>
 
             <p class="mt-1 font-body text-sm text-slate-600">
-              max-w-6xl · Para composiciones amplias y contenido en varias columnas.
+              Ancho máximo de 72rem.
             </p>
-          </header>
+          </Container>
+        </article>
 
-        </Container>
+        <!-- 05. SIZE 2XL -->
+        <article class="space-y-3">
+          <Container width="full" class="space-y-3">
+            <header>
+              <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+                05 / Container size="2xl"
+              </p>
 
-        <Container size="xl" class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
+              <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
+                Extra Extra Large · 80rem
+              </h3>
 
-          <p class="font-accent text-xs font-medium text-slate-600">
-            SIZE: XL
-          </p>
+              <p class="mt-1 font-body text-sm text-slate-600">
+                max-w-7xl · Para contenido que necesita aprovechar un ancho
+                mayor.
+              </p>
+            </header>
+          </Container>
 
-          <p class="mt-2 font-heading text-lg font-bold text-slate-900">
-            Contenido extra amplio
-          </p>
-
-          <p class="mt-1 font-body text-sm text-slate-600">
-            Ancho máximo de 72rem.
-          </p>
-
-        </Container>
-
-      </article>
-
-
-      <!-- 05. SIZE 2XL -->
-      <article class="space-y-3">
-
-        <Container width="full" class="space-y-3">
-
-          <header>
-            <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-              05 / Container size="2xl"
+          <Container
+            size="2xl"
+            class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm"
+          >
+            <p class="font-accent text-xs font-medium text-slate-600">
+              SIZE: 2XL
             </p>
 
-            <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
-              Extra Extra Large · 80rem
-            </h3>
+            <p class="mt-2 font-heading text-lg font-bold text-slate-900">
+              Contenido muy amplio
+            </p>
 
             <p class="mt-1 font-body text-sm text-slate-600">
-              max-w-7xl · Para contenido que necesita aprovechar un ancho mayor.
+              Ancho máximo de 80rem.
             </p>
-          </header>
+          </Container>
+        </article>
 
-        </Container>
+        <!-- 06. DEFAULT SIZE -->
+        <article class="space-y-3">
+          <Container width="full" class="space-y-3">
+            <header>
+              <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+                06 / Container default
+              </p>
 
-        <Container size="2xl" class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
+              <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
+                Tamaño predeterminado · 2XL
+              </h3>
 
-          <p class="font-accent text-xs font-medium text-slate-600">
-            SIZE: 2XL
-          </p>
+              <p class="mt-1 font-body text-sm text-slate-600">
+                Cuando no especificamos size, Container utiliza automáticamente
+                2xl.
+              </p>
+            </header>
+          </Container>
 
-          <p class="mt-2 font-heading text-lg font-bold text-slate-900">
-            Contenido muy amplio
-          </p>
-
-          <p class="mt-1 font-body text-sm text-slate-600">
-            Ancho máximo de 80rem.
-          </p>
-
-        </Container>
-
-      </article>
-
-
-      <!-- 06. DEFAULT SIZE -->
-      <article class="space-y-3">
-
-        <Container width="full" class="space-y-3">
-
-          <header>
-            <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-              06 / Container default
+          <!-- No especificamos size intencionalmente. -->
+          <Container class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
+            <p class="font-accent text-xs font-medium text-slate-600">
+              DEFAULT: 2XL
             </p>
 
-            <h3 class="mt-1 font-heading text-xl font-bold text-slate-900">
-              Tamaño predeterminado · 2XL
-            </h3>
+            <p class="mt-2 font-heading text-lg font-bold text-slate-900">
+              Ancho máximo predeterminado
+            </p>
 
             <p class="mt-1 font-body text-sm text-slate-600">
-              Cuando no especificamos size, Container utiliza automáticamente 2xl.
+              Equivalente a utilizar size="2xl".
             </p>
-          </header>
+          </Container>
+        </article>
+      </div>
 
-        </Container>
-
-        <!-- No especificamos size intencionalmente. -->
-        <Container class="rounded-xl border border-slate-300 bg-white p-6 shadow-sm">
-
-          <p class="font-accent text-xs font-medium text-slate-600">
-            DEFAULT: 2XL
-          </p>
-
-          <p class="mt-2 font-heading text-lg font-bold text-slate-900">
-            Ancho máximo predeterminado
-          </p>
-
-          <p class="mt-1 font-body text-sm text-slate-600">
-            Equivalente a utilizar size="2xl".
-          </p>
-
-        </Container>
-
-      </article>
-
-    </div>
-
-
-    <!-- ========================================================
+      <!-- ========================================================
          DEMOSTRACIÓN FULL-WIDTH
          ======================================================== -->
 
-    <div class="space-y-6 border-t border-slate-300 pt-8">
+      <div class="space-y-6 border-t border-slate-300 pt-8">
+        <header class="space-y-3 px-4 sm:px-6 lg:px-8">
+          <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+            07 / Container width="full"
+          </p>
 
-      <header class="space-y-3 px-4 sm:px-6 lg:px-8">
+          <h3 class="font-heading text-2xl font-bold text-slate-900">
+            Full-width · Ancho completo
+          </h3>
 
-        <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-          07 / Container width="full"
-        </p>
+          <p class="max-w-2xl font-body leading-relaxed text-slate-600">
+            El modo full elimina el ancho máximo y permite que el contenedor
+            ocupe todo el espacio disponible de su elemento padre.
+          </p>
+        </header>
 
-        <h3 class="font-heading text-2xl font-bold text-slate-900">
-          Full-width · Ancho completo
-        </h3>
-
-        <p class="max-w-2xl font-body leading-relaxed text-slate-600">
-          El modo full elimina el ancho máximo y permite que el contenedor
-          ocupe todo el espacio disponible de su elemento padre.
-        </p>
-
-      </header>
-
-      <!--
+        <!--
         Este Container ocupa todo el ancho disponible.
         El fondo permite identificar visualmente sus límites.
       -->
-      <Container width="full" class="border-y border-slate-300 bg-white py-8">
+        <Container width="full" class="border-y border-slate-300 bg-white py-8">
+          <p class="font-accent text-xs font-medium text-slate-600">
+            WIDTH: FULL
+          </p>
 
-        <p class="font-accent text-xs font-medium text-slate-600">
-          WIDTH: FULL
-        </p>
+          <h4 class="mt-2 font-heading text-xl font-bold text-slate-900">
+            Este contenido ocupa todo el ancho disponible.
+          </h4>
 
-        <h4 class="mt-2 font-heading text-xl font-bold text-slate-900">
-          Este contenido ocupa todo el ancho disponible.
-        </h4>
+          <p class="mt-2 font-body text-sm text-slate-600">
+            Conserva el padding horizontal responsive, pero no tiene max-width.
+          </p>
+        </Container>
+      </div>
 
-        <p class="mt-2 font-body text-sm text-slate-600">
-          Conserva el padding horizontal responsive, pero no tiene max-width.
-        </p>
-
-      </Container>
-
-    </div>
-
-
-    <!-- ========================================================
+      <!-- ========================================================
          DEMOSTRACIÓN COMBINADA: FULL-WIDTH + BOXED
          ======================================================== -->
 
-    <div class="space-y-6 border-t border-slate-300 pt-8">
+      <div class="space-y-6 border-t border-slate-300 pt-8">
+        <header class="space-y-3 px-4 sm:px-6 lg:px-8">
+          <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
+            08 / Full-width section + boxed content
+          </p>
 
-      <header class="space-y-3 px-4 sm:px-6 lg:px-8">
+          <h3 class="font-heading text-2xl font-bold text-slate-900">
+            Una sección amplia con contenido centrado.
+          </h3>
 
-        <p class="font-accent text-xs uppercase tracking-wider text-slate-600">
-          08 / Full-width section + boxed content
+          <p class="max-w-2xl font-body leading-relaxed text-slate-600">
+            Una composición habitual en proyectos web: el fondo ocupa todo el
+            ancho de la pantalla, mientras que el contenido mantiene una anchura
+            máxima.
+          </p>
+        </header>
+
+        <!-- La sección ocupa todo el ancho. -->
+        <section class="w-full bg-slate-900 py-10">
+          <!-- El contenido interior se mantiene boxed. -->
+          <Container size="xl">
+            <p class="font-accent text-xs uppercase tracking-wider text-slate-400">
+              FULL-WIDTH SECTION / BOXED CONTENT
+            </p>
+
+            <h4 class="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
+              Fondo de extremo a extremo.
+            </h4>
+
+            <p class="mt-3 max-w-2xl font-body leading-relaxed text-slate-300">
+              El fondo oscuro se extiende a lo largo de la pantalla, pero el
+              contenido conserva una alineación central y un ancho máximo de
+              72rem.
+            </p>
+          </Container>
+        </section>
+      </div>
+
+      <!-- Pie de la demostración -->
+      <footer class="border-t border-slate-300 pt-6">
+        <p class="font-body text-sm text-slate-500">
+          Container · Boxed & Full-width · VTAV Frontend
+        </p>
+      </footer>
+    </Container>
+  </section>
+
+  <!-- ============================================================
+     SECTION 04: ICONOGRAPHY
+     ============================================================ -->
+
+  <section class="w-full bg-slate-100 py-16">
+    <Container>
+      <!-- Encabezado de sección -->
+      <div class="mb-10">
+        <span class="font-accent text-sm text-slate-500">
+          UI COMPONENTS / ICONS
+        </span>
+
+        <h2 class="mt-2 text-3xl font-heading font-bold text-slate-900">
+          Una iconografía consistente
+        </h2>
+
+        <p class="mt-3 max-w-2xl text-slate-600">
+          Iconify integra iconos de interfaz y marcas reconocidas mediante SVG,
+          con estilos controlados por Tailwind CSS.
+        </p>
+      </div>
+
+      <!-- 01. Tamaño pequeño -->
+      <div class="mb-8 rounded-xl bg-white p-6">
+        <h3 class="mb-2 font-heading font-bold text-slate-900">Small · 16px</h3>
+
+        <p class="mb-5 text-sm text-slate-500">
+          Iconos compactos para elementos secundarios, etiquetas y acciones
+          pequeñas.
         </p>
 
-        <h3 class="font-heading text-2xl font-bold text-slate-900">
-          Una sección amplia con contenido centrado.
+        <div class="flex items-center gap-6">
+          <Icon name="tabler:arrow-right" class="size-4" />
+          <Icon name="tabler:search" class="size-4" />
+          <Icon name="tabler:heart" class="size-4" />
+          <Icon name="simple-icons:github" class="size-4" />
+        </div>
+      </div>
+
+      <!-- 02. Tamaño mediano -->
+      <div class="mb-8 rounded-xl bg-white p-6">
+        <h3 class="mb-2 font-heading font-bold text-slate-900">
+          Medium · 24px
         </h3>
 
-        <p class="max-w-2xl font-body leading-relaxed text-slate-600">
-          Una composición habitual en proyectos web: el fondo ocupa
-          todo el ancho de la pantalla, mientras que el contenido mantiene
-          una anchura máxima.
+        <p class="mb-5 text-sm text-slate-500">
+          Tamaño estándar para botones, navegación y controles de interfaz.
         </p>
 
-      </header>
+        <div class="flex items-center gap-6">
+          <Icon name="tabler:arrow-right" class="size-6" />
+          <Icon name="tabler:search" class="size-6" />
+          <Icon name="tabler:heart" class="size-6" />
+          <Icon name="simple-icons:github" class="size-6" />
+        </div>
+      </div>
 
-      <!-- La sección ocupa todo el ancho. -->
-      <section class="w-full bg-slate-900 py-10">
+      <!-- 03. Tamaño grande -->
+      <div class="mb-8 rounded-xl bg-white p-6">
+        <h3 class="mb-2 font-heading font-bold text-slate-900">Large · 32px</h3>
 
-        <!-- El contenido interior se mantiene boxed. -->
-        <Container size="xl">
+        <p class="mb-5 text-sm text-slate-500">
+          Para elementos destacados, acciones principales y bloques visuales.
+        </p>
 
-          <p class="font-accent text-xs uppercase tracking-wider text-slate-400">
-            FULL-WIDTH SECTION / BOXED CONTENT
-          </p>
+        <div class="flex items-center gap-6">
+          <Icon name="tabler:arrow-right" class="size-8" />
+          <Icon name="tabler:search" class="size-8" />
+          <Icon name="tabler:heart" class="size-8" />
+          <Icon name="simple-icons:github" class="size-8" />
+        </div>
+      </div>
 
-          <h4 class="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
-            Fondo de extremo a extremo.
-          </h4>
+      <!-- 04. Interacción: color y hover -->
+      <div class="rounded-xl bg-slate-900 p-6">
+        <h3 class="mb-2 font-heading font-bold text-white">Color & Hover</h3>
 
-          <p class="mt-3 max-w-2xl font-body leading-relaxed text-slate-300">
-            El fondo oscuro se extiende a lo largo de la pantalla,
-            pero el contenido conserva una alineación central
-            y un ancho máximo de 72rem.
-          </p>
+        <p class="mb-5 text-sm text-slate-300">
+          Personalización visual mediante clases Tailwind y transiciones.
+        </p>
 
-        </Container>
+        <div class="flex items-center gap-8">
+          <Icon
+            name="tabler:heart"
+            class="size-8 text-rose-400 transition-transform duration-300 hover:scale-125 hover:text-rose-300"
+          />
 
-      </section>
+          <Icon
+            name="tabler:arrow-right"
+            class="size-8 text-blue-400 transition-transform duration-300 hover:translate-x-2 hover:text-blue-300"
+          />
 
-    </div>
+          <Icon
+            name="simple-icons:github"
+            class="size-8 text-slate-300 transition-colors duration-300 hover:text-white"
+          />
+        </div>
+      </div>
+    </Container>
+  </section>
 
+  <!-- =====================================================
+     SECTION 05: COLOR TOKENS
+====================================================== -->
+  <section class="w-full bg-background py-16">
+    <Container>
+      <!-- Encabezado -->
+      <div class="mb-10">
+        <span class="font-accent text-sm text-text-muted">
+          DESIGN SYSTEM / COLOR TOKENS
+        </span>
 
-    <!-- Pie de la demostración -->
-    <footer class="border-t border-slate-300 pt-6">
+        <h2 class="mt-2 text-3xl font-heading font-bold text-text">
+          Una identidad visual adaptable
+        </h2>
 
-      <p class="font-body text-sm text-slate-500">
-        Container · Boxed & Full-width · VTAV Frontend
-      </p>
+        <p class="mt-3 max-w-2xl text-text-muted">
+          Tokens semánticos que permiten personalizar la identidad visual de
+          cada proyecto y mantener consistencia en sus componentes.
+        </p>
+      </div>
 
-    </footer>
+      <!-- 01. Brand colors -->
+      <div class="mb-8 rounded-xl border border-border bg-surface p-6">
+        <h3 class="mb-2 font-heading font-bold text-text">Brand colors</h3>
 
-  </Container>
+        <p class="mb-5 text-sm text-text-muted">
+          Colores principales de identidad y acciones.
+        </p>
 
-</section>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div>
+            <div class="h-20 rounded-lg bg-primary"></div>
+            <p class="mt-2 font-medium text-text">Primary</p>
+            <p class="text-sm text-text-muted">bg-primary</p>
+          </div>
 
+          <div>
+            <div class="h-20 rounded-lg bg-secondary"></div>
+            <p class="mt-2 font-medium text-text">Secondary</p>
+            <p class="text-sm text-text-muted">bg-secondary</p>
+          </div>
+
+          <div>
+            <div class="h-20 rounded-lg bg-accent"></div>
+            <p class="mt-2 font-medium text-text">Accent</p>
+            <p class="text-sm text-text-muted">bg-accent</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02. Surface colors -->
+      <div class="mb-8 rounded-xl border border-border bg-surface p-6">
+        <h3 class="mb-2 font-heading font-bold text-text">
+          Surface & Background
+        </h3>
+
+        <p class="mb-5 text-sm text-text-muted">
+          Superficies para páginas, tarjetas y elementos de interfaz.
+        </p>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-lg border border-border bg-background p-5">
+            <p class="font-medium text-text">Background</p>
+            <p class="mt-1 text-sm text-text-muted">bg-background</p>
+          </div>
+
+          <div class="rounded-lg border border-border bg-surface p-5">
+            <p class="font-medium text-text">Surface</p>
+            <p class="mt-1 text-sm text-text-muted">bg-surface</p>
+          </div>
+
+          <div class="rounded-lg border border-border bg-surface-muted p-5">
+            <p class="font-medium text-text">Surface Muted</p>
+            <p class="mt-1 text-sm text-text-muted">bg-surface-muted</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03. Text colors -->
+      <div class="mb-8 rounded-xl border border-border bg-surface p-6">
+        <h3 class="mb-2 font-heading font-bold text-text">Text & Links</h3>
+
+        <p class="mb-5 text-sm text-text-muted">
+          Jerarquía tipográfica, enlaces y estados de navegación.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <p class="text-lg font-semibold text-text">Primary text</p>
+            <p class="text-sm text-text-muted">text-text</p>
+          </div>
+
+          <div>
+            <p class="text-text-muted">Secondary text</p>
+            <p class="text-sm text-text-muted">text-text-muted</p>
+          </div>
+
+          <div>
+            <p class="text-text-disabled">Disabled text</p>
+            <p class="text-sm text-text-muted">text-text-disabled</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-6">
+            <a
+              href="#"
+              class="font-medium text-link transition-colors hover:text-link-hover"
+            >
+              Default link
+            </a>
+
+            <span class="text-sm text-text-muted">
+              text-link / hover:text-link-hover
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04. Border colors -->
+      <div class="mb-8 rounded-xl border border-border bg-surface p-6">
+        <h3 class="mb-2 font-heading font-bold text-text">Borders</h3>
+
+        <p class="mb-5 text-sm text-text-muted">
+          Diferentes niveles de contraste para separar elementos.
+        </p>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div class="rounded-lg border border-border p-5">
+            <p class="font-medium text-text">Default border</p>
+            <p class="text-sm text-text-muted">border-border</p>
+          </div>
+
+          <div class="rounded-lg border-2 border-border-strong p-5">
+            <p class="font-medium text-text">Strong border</p>
+            <p class="text-sm text-text-muted">border-border-strong</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05. Feedback colors -->
+      <div class="rounded-xl border border-border bg-surface p-6">
+        <h3 class="mb-2 font-heading font-bold text-text">Feedback states</h3>
+
+        <p class="mb-5 text-sm text-text-muted">
+          Colores semánticos para comunicar estados y resultados.
+        </p>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div class="rounded-lg bg-success/10 p-4">
+            <p class="font-semibold text-success">Success</p>
+            <p class="mt-1 text-sm text-success">
+              Operación completada correctamente.
+            </p>
+          </div>
+
+          <div class="rounded-lg bg-warning/10 p-4">
+            <p class="font-semibold text-warning">Warning</p>
+            <p class="mt-1 text-sm text-warning">
+              Atención: revisa esta información.
+            </p>
+          </div>
+
+          <div class="rounded-lg bg-danger/10 p-4">
+            <p class="font-semibold text-danger">Danger</p>
+            <p class="mt-1 text-sm text-danger">Se ha producido un error.</p>
+          </div>
+
+          <div class="rounded-lg bg-info/10 p-4">
+            <p class="font-semibold text-info">Info</p>
+            <p class="mt-1 text-sm text-info">
+              Información adicional disponible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
 </Layout>
