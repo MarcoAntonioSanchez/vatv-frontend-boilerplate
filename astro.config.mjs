@@ -10,5 +10,9 @@ export default defineConfig({
   integrations: [icon(), vue()],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      // TODO: Replace with the project-specific domain when creating its repository.
+      allowedHosts: ["example.com"],
+    },
   },
 });

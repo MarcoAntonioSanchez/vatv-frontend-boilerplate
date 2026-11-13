@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import type { AuthService } from "../types/auth.types";
 import { provideAuth } from "../composables/useAuth";
-import { LocalAuthService } from "../services/auth.local";
+import { ApiAuthService } from "../services/auth.api";
 
 /**
  * Permite inyectar una implementación de autenticación.
  *
- * Si no se proporciona ninguna, utilizamos el servicio local
- * de demostración.
+ * Si no se proporciona ninguna, utilizamos NORA API.
  */
 const props = defineProps<{
   service?: AuthService;
 }>();
 
 // Inicializa el contexto para los componentes descendientes.
-provideAuth(props.service ?? new LocalAuthService());
+provideAuth(props.service ?? new ApiAuthService());
 </script>
 
 <template>

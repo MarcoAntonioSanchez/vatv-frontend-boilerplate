@@ -1,94 +1,101 @@
 # VTAV Frontend
 
-Boilerplate reutilizable para el desarrollo de interfaces web con **Astro, Vue 3, Tailwind CSS v4 y TypeScript**.
+A reusable frontend boilerplate for building modern web interfaces with **Astro, Vue 3, Tailwind CSS v4, and TypeScript**.
 
-VTAV utiliza Astro como framework principal y adopta una arquitectura _static-first_, con integración de Vue para funcionalidades interactivas. Su organización se basa en componentes reutilizables, separación de datos y contenido, y módulos funcionales independientes que pueden incorporarse progresivamente según las necesidades de cada proyecto.
+VTAV uses Astro as its primary framework and follows a _static-first_ architecture, integrating Vue for interactive functionality. Its structure is based on reusable components, separation of data and content, and independent functional modules that can be progressively incorporated according to each project's requirements.
 
-El objetivo es disponer de una base frontend consistente, escalable y adaptable a distintos proyectos web, sin introducir dependencias o complejidad arquitectónica innecesarias.
+The goal is to provide a consistent, scalable, and adaptable frontend foundation for different web projects without introducing unnecessary dependencies or architectural complexity.
 
-> **Estado:** desarrollo activo. La configuración base, el sistema de diseño, la biblioteca inicial de componentes, Astro Content Collections y el primer módulo de autenticación local están implementados y verificados mediante compilación y pruebas funcionales en navegador.
+> **Status:** Active development. The foundational configuration, design system, initial component library, Astro Content Collections, and reusable authentication module are implemented. The authentication module now supports local authentication and integration with the NORA backend API.
 
-## Stack tecnológico
+## Technology Stack
 
-| Tecnología                                    | Propósito                                           |
-| --------------------------------------------- | --------------------------------------------------- |
-| [Astro](https://astro.build/)                 | Framework principal para páginas y sitios web       |
-| [Vite](https://vite.dev/)                     | Servidor de desarrollo y herramienta de compilación |
-| [Vue 3](https://vuejs.org/)                   | Componentes reactivos e interfaces interactivas     |
-| [TypeScript](https://www.typescriptlang.org/) | Tipado estático y contratos entre módulos           |
-| [Tailwind CSS v4](https://tailwindcss.com/)   | Sistema de utilidades CSS y tokens de diseño        |
-| [pnpm](https://pnpm.io/)                      | Gestor de paquetes                                  |
+| Technology                                    | Purpose                                        |
+| --------------------------------------------- | ---------------------------------------------- |
+| [Astro](https://astro.build/)                 | Primary framework for pages and websites       |
+| [Vite](https://vite.dev/)                     | Development server and build tooling           |
+| [Vue 3](https://vuejs.org/)                   | Reactive components and interactive interfaces |
+| [TypeScript](https://www.typescriptlang.org/) | Static typing and contracts between modules    |
+| [Tailwind CSS v4](https://tailwindcss.com/)   | Utility-first CSS and design tokens            |
+| [pnpm](https://pnpm.io/)                      | Package manager                                |
 
-### Principios del proyecto
+### Project Principles
 
-- **Static-first:** priorizar Astro para páginas estáticas, contenido editorial y sitios informativos.
-- **Modularidad progresiva:** incorporar funcionalidades independientes conforme las necesidades del proyecto lo justifiquen.
-- **Separación de responsabilidades:** mantener diferenciados los datos generales, el contenido editorial y los módulos funcionales.
-- **Componentes reutilizables:** construir una biblioteca de interfaz consistente y extensible.
-- **Desacoplamiento:** evitar que la interfaz dependa directamente de proveedores externos, servicios o infraestructura.
-- **Tipografía y diseño semánticos:** consumir tokens mediante roles, no mediante valores visuales dispersos.
-- **Dependencias justificadas:** incorporar herramientas adicionales únicamente cuando aporten valor.
-- **Compilación optimizada:** utilizar el flujo de producción de Vite a través de Astro.
+- **Static-first:** Prioritize Astro for static pages, editorial content, and informational websites.
+- **Progressive modularity:** Introduce independent functionality as project requirements justify it.
+- **Separation of responsibilities:** Keep application data, editorial content, and functional modules independent.
+- **Reusable components:** Build a consistent and extensible interface library.
+- **Decoupling:** Avoid direct dependencies between the interface, external providers, services, and infrastructure.
+- **Semantic design system:** Consume design tokens through semantic roles instead of scattered visual values.
+- **Justified dependencies:** Add tools and packages only when they provide meaningful value.
+- **Optimized builds:** Use Astro's production build pipeline powered by Vite.
 
-## Requisitos
+## Requirements
 
-- Node.js compatible con la versión de Astro instalada. Consultar el campo `engines` de `package.json`.
+- Node.js compatible with the installed Astro version. Check the `engines` field in `package.json`.
 - pnpm.
 - Git.
 
-El proyecto utiliza exclusivamente pnpm como gestor de paquetes.
+The project exclusively uses pnpm as its package manager.
 
-## Instalación y desarrollo
+## Installation and Development
 
-Clona el repositorio y accede a su directorio. Después, ejecuta:
+Clone the repository and navigate to its directory.
+
+Install the dependencies:
 
 ```bash
 pnpm install
+```
+
+Start the development server:
+
+```bash
 pnpm dev
 ```
 
-Abre la dirección local que indique la terminal, normalmente:
+Open the local address displayed in the terminal, normally:
 
 `http://localhost:4321`
 
-## Comandos disponibles
+## Available Commands
 
-Todos los comandos se ejecutan desde la raíz del proyecto.
+All commands must be executed from the project root.
 
-| Comando                        | Descripción                                 |
-| ------------------------------ | ------------------------------------------- |
-| `pnpm dev`                     | Inicia el servidor local de desarrollo      |
-| `pnpm build`                   | Compila el sitio para producción en `dist/` |
-| `pnpm preview`                 | Previsualiza localmente la compilación      |
-| `pnpm astro -- --help`         | Muestra la ayuda de la CLI de Astro         |
-| `pnpm astro add <integration>` | Añade una integración compatible de Astro   |
+| Command                        | Description                                |
+| ------------------------------ | ------------------------------------------ |
+| `pnpm dev`                     | Starts the local development server        |
+| `pnpm build`                   | Builds the production website into `dist/` |
+| `pnpm preview`                 | Previews the production build locally      |
+| `pnpm astro -- --help`         | Displays Astro CLI help                    |
+| `pnpm astro add <integration>` | Adds a compatible Astro integration        |
 
-Para comprobar la compilación:
+To verify the production build:
 
 ```bash
 pnpm build
 pnpm preview
 ```
 
-La salida configurada actualmente es estática. Astro procesa las páginas y los estilos durante la compilación, incluyendo el CSS generado por Tailwind CSS.
+The project currently uses static output. Astro processes pages and styles during compilation, including CSS generated by Tailwind CSS.
 
-> `pnpm astro check` no forma parte de los requisitos actuales de validación debido a la compatibilidad entre las versiones instaladas de Astro y TypeScript. La validación habitual utiliza `pnpm build` y pruebas funcionales en navegador.
+The current validation workflow uses `pnpm build` and functional browser testing. Additional quality tools may be introduced when their compatibility with the installed toolchain is established.
 
-## Arquitectura y organización
+## Architecture and Project Organization
 
-VTAV adopta una arquitectura organizada en tres áreas principales:
+VTAV follows an architecture organized around three main areas:
 
-- `data`: configuración y datos generales de la aplicación.
-- `content`: contenido editorial administrado mediante Astro Content Collections.
-- `modules`: funcionalidades independientes y reutilizables.
+- `data`: General application data and configuration.
+- `content`: Editorial content managed through Astro Content Collections.
+- `modules`: Independent and reusable functionality.
 
-Cada área tiene una responsabilidad específica. No deben utilizarse indistintamente ni duplicar información entre ellas.
+Each area has a specific responsibility. They should not be used interchangeably or contain duplicated information.
 
-### Estructura del proyecto
+### Project Structure
 
 ```text
 /
-├── public/                         # Recursos estáticos con rutas públicas
+├── public/                         # Static assets served from public URLs
 ├── src/
 │   ├── assets/
 │   │   └── fonts/
@@ -97,28 +104,28 @@ Cada área tiene una responsabilidad específica. No deben utilizarse indistinta
 │   │       └── accent/
 │   │
 │   ├── components/
-│   │   ├── ui/                     # Componentes de interfaz
-│   │   ├── layout/                 # Componentes estructurales
-│   │   └── sections/               # Secciones reutilizables
+│   │   ├── ui/                     # Reusable interface components
+│   │   ├── layout/                 # Structural components
+│   │   └── sections/               # Reusable interface sections
 │   │
-│   ├── layouts/                    # Layouts compartidos de Astro
+│   ├── layouts/                    # Shared Astro layouts
 │   │
-│   ├── pages/                      # Páginas y rutas de Astro
+│   ├── pages/                      # Astro pages and routes
 │   │   ├── index.astro
 │   │   ├── blog.astro
 │   │   └── login.astro
 │   │
-│   ├── data/                       # Datos y configuración general
+│   ├── data/                       # General application data
 │   │   ├── site/
 │   │   ├── navigation/
 │   │   └── constants/
 │   │
-│   ├── content/                    # Contenido editorial
+│   ├── content/                    # Editorial content
 │   │   ├── blog/
 │   │   ├── pages/
 │   │   └── authors/
 │   │
-│   ├── modules/                    # Funcionalidades independientes
+│   ├── modules/                    # Independent functionality
 │   │   └── auth/
 │   │       ├── components/
 │   │       ├── composables/
@@ -127,13 +134,13 @@ Cada área tiene una responsabilidad específica. No deben utilizarse indistinta
 │   │       └── index.ts
 │   │
 │   ├── styles/
-│   │   ├── global.css              # Entrada global de estilos
-│   │   ├── tokens.css              # Tokens de diseño
-│   │   └── fonts.css               # Declaraciones @font-face
+│   │   ├── global.css              # Global stylesheet entry point
+│   │   ├── tokens.css              # Design tokens
+│   │   └── fonts.css               # @font-face declarations
 │   │
-│   ├── icons/                      # Recursos de iconografía
-│   ├── content.config.ts           # Registro de colecciones
-│   └── env.d.ts                    # Tipos de entorno de Astro
+│   ├── icons/                      # Icon resources
+│   ├── content.config.ts           # Content collection definitions
+│   └── env.d.ts                    # Astro environment types
 │
 ├── astro.config.mjs
 ├── package.json
@@ -141,45 +148,45 @@ Cada área tiene una responsabilidad específica. No deben utilizarse indistinta
 └── README.md
 ```
 
-La estructura representa la organización arquitectónica del proyecto. No es obligatorio crear todos los directorios al iniciar un proyecto derivado: los módulos y subdirectorios deben incorporarse cuando exista un caso de uso que los justifique.
+This structure represents the project's architectural organization. Derived projects do not need to create every directory from the beginning. Modules and subdirectories should be introduced when a real use case justifies them.
 
-### 1. Data: configuración y datos generales
+### 1. Data: General Application Data
 
-Ubicación: `src/data/`
+Location: `src/data/`
 
-Contiene información estructurada y reutilizable que pertenece a la aplicación.
+Contains structured and reusable information belonging to the application.
 
-Ejemplos:
+Examples include:
 
-- Configuración general del sitio.
-- Información de identidad de la aplicación.
-- Elementos de navegación.
-- Constantes y valores compartidos.
+- General site configuration.
+- Application identity information.
+- Navigation items.
+- Shared constants and values.
 
-`data` no es un CMS ni un repositorio genérico de cualquier información. Su responsabilidad es proporcionar datos de configuración y aplicación que puedan consumirse desde diferentes componentes.
+`data` is not a CMS or a generic repository for all application information. Its responsibility is to provide reusable application data and configuration.
 
-### 2. Content: contenido editorial
+### 2. Content: Editorial Content
 
-Ubicación: `src/content/`
+Location: `src/content/`
 
-Contiene contenido administrado mediante Astro Content Collections.
+Contains editorial content managed through Astro Content Collections.
 
-Se utiliza para artículos, páginas editoriales y otros contenidos estructurados que Astro puede validar y procesar durante la compilación.
+It is intended for articles, editorial pages, and other structured content that Astro can validate and process during compilation.
 
-Actualmente existe una colección `blog`, registrada en `src/content.config.ts`.
+The project currently includes a `blog` collection registered in `src/content.config.ts`.
 
-Su esquema inicial contempla:
+Its initial schema includes:
 
-| Campo         | Tipo    | Descripción                           |
-| ------------- | ------- | ------------------------------------- |
-| `title`       | string  | Título del artículo                   |
-| `description` | string  | Descripción                           |
-| `pubDate`     | date    | Fecha de publicación                  |
-| `draft`       | boolean | Indica si el contenido es un borrador |
+| Field         | Type    | Description                              |
+| ------------- | ------- | ---------------------------------------- |
+| `title`       | string  | Article title                            |
+| `description` | string  | Article description                      |
+| `pubDate`     | date    | Publication date                         |
+| `draft`       | boolean | Indicates whether the content is a draft |
 
-Los artículos utilizan Markdown o MDX.
+Articles use Markdown or MDX.
 
-Ejemplo de consulta:
+Example query:
 
 ```ts
 import { getCollection } from "astro:content";
@@ -189,225 +196,219 @@ const posts = await getCollection("blog", ({ data }) => {
 });
 ```
 
-La colección `blog` cuenta con una página de demostración en `/blog`, que muestra cómo recuperar, validar y renderizar contenido editorial.
+The `blog` collection has a demonstration page at `/blog`, showing how to retrieve, validate, and render editorial content.
 
-Los directorios `pages/` y `authors/` están previstos dentro de `content`, pero no representan colecciones registradas actualmente.
+The `pages/` and `authors/` directories are planned organizational areas. They do not currently represent registered collections.
 
-Documentación: [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/).
+Documentation: [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/).
 
-### 3. Modules: funcionalidades independientes
+### 3. Modules: Independent Functionality
 
-Ubicación: `src/modules/`
+Location: `src/modules/`
 
-Contiene funcionalidades que agrupan sus propios componentes, lógica, servicios, tipos y datos cuando resulta necesario.
+Contains functionality that groups its own components, logic, services, types, and data when necessary.
 
-Cada módulo debe encapsular su responsabilidad y exponer una interfaz pública mediante su archivo `index.ts`.
+Each module should encapsulate its responsibilities and expose its public interface through an `index.ts` file.
 
-Ejemplos de posibles módulos:
+Examples of possible modules:
 
-- Autenticación.
-- Gestión de usuarios.
-- Formularios complejos.
-- Notificaciones.
-- Integraciones con servicios externos.
+- Authentication.
+- User management.
+- Complex forms.
+- Notifications.
+- External service integrations.
 
-No es obligatorio crear todos estos módulos ni todas sus subcarpetas desde el inicio.
+These modules and their subdirectories do not need to be created in advance.
 
-**Modularidad progresiva:** una funcionalidad comienza con la estructura mínima necesaria y evoluciona cuando su complejidad lo requiere.
+**Progressive modularity:** A feature starts with the minimum structure required and evolves as its complexity increases.
 
-#### Servicios y proveedores externos
+#### Services and External Providers
 
-Cuando un módulo consume un servicio externo, su implementación debe abstraerse mediante contratos e interfaces.
+When a module consumes an external service, its implementation should be abstracted through contracts and interfaces.
 
-La interfaz de usuario no debe depender directamente del proveedor.
+The user interface should not depend directly on the provider.
 
-Por ejemplo, un módulo de autenticación puede utilizar una implementación local durante el desarrollo y posteriormente sustituirla por una implementación que consuma una API propia.
+For example, an authentication module can use a local implementation during development and later replace it with an implementation that consumes an API.
 
-Esta separación permite modificar proveedores sin reconstruir los componentes que consumen la funcionalidad.
+This separation allows providers to change without rebuilding the components that consume the functionality.
 
-## Páginas y recursos
+## Pages and Assets
 
-Astro detecta las páginas dentro de `src/pages/`. El nombre y la ubicación del archivo determinan la ruta correspondiente.
+Astro automatically detects pages inside `src/pages/`. The file name and location determine the corresponding route.
 
-Las páginas pueden utilizar layouts compartidos y componentes Astro o Vue.
+Pages can use shared layouts and Astro or Vue components.
 
-Actualmente existen:
+The current pages include:
 
-| Ruta     | Propósito                                        |
-| -------- | ------------------------------------------------ |
-| `/`      | Página principal y demostraciones de componentes |
-| `/blog`  | Demostración de Astro Content Collections        |
-| `/login` | Demostración del módulo de autenticación local   |
+| Route    | Purpose                                 |
+| -------- | --------------------------------------- |
+| `/`      | Main page and component demonstrations  |
+| `/blog`  | Astro Content Collections demonstration |
+| `/login` | Authentication module demonstration     |
 
-Las rutas de demostración forman parte del boilerplate y pueden permanecer sin contenido funcional en proyectos derivados que no necesiten esas características.
+Demonstration routes are part of the boilerplate and can remain unused in derived projects that do not require those features.
 
-Los recursos pueden ubicarse en:
+Assets can be stored in:
 
-- `src/assets/`: recursos importados desde el código y procesados por la cadena de compilación cuando corresponda.
-- `public/`: archivos copiados sin procesamiento y disponibles mediante rutas públicas estables.
+- `src/assets/`: Resources imported from code and processed by the build pipeline when applicable.
+- `public/`: Files copied without processing and served through stable public URLs.
 
-## Sistema de estilos
+## Styling System
 
 ### Tailwind CSS v4
 
-Tailwind se integra mediante el plugin oficial de Vite, configurado en `astro.config.mjs`.
+Tailwind is integrated through the official Vite plugin configured in `astro.config.mjs`.
 
-El archivo `src/styles/global.css` es el punto de entrada de estilos:
+The `src/styles/global.css` file is the global stylesheet entry point:
 
 ```css
 @import "tailwindcss";
 
-/* Incluye los componentes de los módulos en el análisis de clases. */
+/* Includes module components in Tailwind's class detection. */
 @source "../modules";
 
 @import "./tokens.css";
 @import "./fonts.css";
 ```
 
-Los layouts que necesiten los estilos globales deben importar esta entrada:
+Layouts that require global styles should import this entry point.
 
-```astro
----
-import "../styles/global.css";
----
-```
+The main `Layout.astro` currently centralizes this import for the pages that use it.
 
-El layout principal `Layout.astro` centraliza actualmente esta importación para las páginas que lo utilizan.
+Production styles are processed during `pnpm build`. No separate Tailwind compilation command is required.
 
-Los estilos de producción se procesan durante `pnpm build`. No se requiere ejecutar una compilación manual de Tailwind por separado.
+### Design Tokens
 
-### Tokens de diseño
+Design tokens are defined in `src/styles/tokens.css` using Tailwind CSS v4's `@theme` system and CSS variables.
 
-Los tokens se definen en `src/styles/tokens.css` mediante el sistema `@theme` y las variables CSS de Tailwind v4.
+The system includes two main groups:
 
-El sistema contempla dos grandes grupos:
+**Typography**
 
-**Tipografía**
-
-- Familias tipográficas semánticas.
-- Escalas tipográficas.
-- Tamaños y alturas de línea.
+- Semantic font families.
+- Typographic scales.
+- Font sizes and line heights.
 
 **Color**
 
-- Brand: primary, secondary, accent y sus estados.
-- UI: background, surface, surface-muted, text, text-muted, text-disabled, border, border-strong, link y link-hover.
-- Feedback: success, warning, danger e info.
+- Brand: primary, secondary, accent, and their states.
+- UI: background, surface, surface-muted, text, text-muted, text-disabled, border, border-strong, link, and link-hover.
+- Feedback: success, warning, danger, and info.
 
-Los colores cuentan con configuraciones Light y Dark, permitiendo adaptar la identidad visual mediante tokens sin modificar los componentes individualmente.
+Colors include Light and Dark configurations, allowing the visual identity to adapt through tokens without modifying individual components.
 
-Los componentes deben utilizar los tokens semánticos en lugar de introducir colores arbitrarios cuando exista un token apropiado.
+Components should use semantic tokens instead of arbitrary colors whenever an appropriate token exists.
 
-### Tipografía
+### Typography
 
-Las familias tipográficas se registran mediante roles semánticos:
+Font families are registered through semantic roles:
 
-| Clase          | Familia        | Uso                                 |
-| -------------- | -------------- | ----------------------------------- |
-| `font-heading` | Ubuntu         | Títulos y subtítulos                |
-| `font-body`    | Inter          | Párrafos y texto general            |
-| `font-accent`  | JetBrains Mono | Badges, labels y elementos técnicos |
+| Class          | Family         | Usage                                  |
+| -------------- | -------------- | -------------------------------------- |
+| `font-heading` | Ubuntu         | Headings and subtitles                 |
+| `font-body`    | Inter          | Paragraphs and general text            |
+| `font-accent`  | JetBrains Mono | Badges, labels, and technical elements |
 
-Las escalas tipográficas disponibles incluyen:
+Available typographic scales include:
 
 - `display`
-- `h1` a `h6`
+- `h1` through `h6`
 - `body-lg`
 - `body`
 - `body-sm`
 - `caption`
 
-Cada escala contempla su correspondiente altura de línea.
+Each scale includes its corresponding line height.
 
-### Fuentes locales
+### Local Fonts
 
-Las fuentes se almacenan en `src/assets/fonts/` y se registran mediante `@font-face` en `src/styles/fonts.css`.
+Fonts are stored in `src/assets/fonts/` and registered through `@font-face` in `src/styles/fonts.css`.
 
-| Rol     | Archivo                               | Peso              |
+| Role    | File                                  | Weight            |
 | ------- | ------------------------------------- | ----------------- |
 | Heading | `heading/Ubuntu-Medium.woff2`         | 500               |
 | Heading | `heading/Ubuntu-Bold.woff2`           | 700               |
 | Body    | `body/Inter-Variable.woff2`           | Variable, 100–900 |
 | Accent  | `accent/JetBrainsMono-Variable.woff2` | Variable, 100–900 |
 
-Los rangos variables declarados deben corresponder a los pesos realmente disponibles en cada archivo de fuente.
+Declared variable font ranges must match the actual weights available in each font file.
 
-Se utiliza `font-display: swap` para mostrar una fuente de respaldo mientras se carga la fuente local.
+`font-display: swap` is used to display a fallback font while local fonts are loading.
 
-## Biblioteca de componentes
+## Component Library
 
-La biblioteca de interfaz se organiza en tres categorías:
+The interface library is organized into three categories:
 
-| Directorio             | Responsabilidad                  |
-| ---------------------- | -------------------------------- |
-| `components/ui/`       | Elementos visuales reutilizables |
-| `components/layout/`   | Estructura y distribución        |
-| `components/sections/` | Secciones completas de interfaz  |
+| Directory              | Responsibility              |
+| ---------------------- | --------------------------- |
+| `components/ui/`       | Reusable visual elements    |
+| `components/layout/`   | Structure and layout        |
+| `components/sections/` | Complete interface sections |
 
-### Componentes implementados
+### Implemented Components
 
 #### Button.vue
 
-Componente de interfaz que admite elementos `<button>` y `<a>` dependiendo de sus propiedades.
+An interface component that supports both `<button>` and `<a>` elements depending on its properties.
 
-Características:
+Features:
 
-- Variantes `solid`, `outline`, `ghost` y `link`.
-- Soporte para iconos.
-- Posición configurable de iconos.
-- Efectos de icono al pasar el cursor.
-- Estados disabled y loading.
-- Eventos de interacción.
-- Compatibilidad con formularios.
-- Accesibilidad y estados de focus.
-- Soporte para reducción de movimiento.
+- `solid`, `outline`, `ghost`, and `link` variants.
+- Icon support.
+- Configurable icon position.
+- Hover icon effects.
+- Disabled and loading states.
+- Interaction events.
+- Form compatibility.
+- Accessibility and focus states.
+- Reduced-motion support.
 
-El estado de carga se controla desde el componente que consume el botón.
+The loading state is controlled by the component consuming the button.
 
 #### Container.astro
 
-Componente estructural para controlar el ancho y la distribución del contenido.
+A structural component used to control content width and distribution.
 
-Admite:
+Supported sizes:
 
-| Tamaño | Ancho máximo |
-| ------ | ------------ |
-| `sm`   | 48rem        |
-| `md`   | 56rem        |
-| `lg`   | 64rem        |
-| `xl`   | 72rem        |
-| `2xl`  | 80rem        |
+| Size  | Maximum width |
+| ----- | ------------- |
+| `sm`  | 48rem         |
+| `md`  | 56rem         |
+| `lg`  | 64rem         |
+| `xl`  | 72rem         |
+| `2xl` | 80rem         |
 
-También admite los modos `boxed` y `full`.
+It also supports `boxed` and `full` modes.
 
-Valores predeterminados: `width="boxed"` y `size="2xl"`.
+Default values: `width="boxed"` and `size="2xl"`.
 
-### Componentes previstos
+### Planned Components
 
-La biblioteca puede ampliarse con:
+The library can be extended with:
 
 - Links.
 - Badges.
 - Inputs.
-- Checkboxes y radios.
-- Listas.
+- Checkboxes and radio buttons.
+- Lists.
 - Tabs.
-- Modales.
-- Componentes de navegación.
-- Secciones reutilizables.
+- Modals.
+- Navigation components.
+- Reusable sections.
 
-Su incorporación dependerá de las necesidades de los proyectos derivados.
+Their implementation depends on the requirements of derived projects.
 
-## Iconografía
+## Iconography
 
-VTAV utiliza `astro-icon` con colecciones de Iconify.
+VTAV uses `astro-icon` with Iconify collections.
 
-Colecciones instaladas:
+Installed collections:
 
-- [Tabler Icons](https://tabler.io/icons): iconografía general de interfaz.
-- [Simple Icons](https://simpleicons.org/): logotipos e iconografía de marcas.
+- [Tabler Icons](https://tabler.io/icons): General interface iconography.
+- [Simple Icons](https://simpleicons.org/): Brand logos and icons.
 
-Los iconos se consumen desde componentes Astro:
+Icons are consumed from Astro components:
 
 ```astro
 ---
@@ -417,41 +418,41 @@ import { Icon } from "astro-icon/components";
 <Icon name="simple-icons:instagram" class="size-6" />
 ```
 
-Se recomienda utilizar Tabler para elementos de interfaz y Simple Icons para marcas y servicios.
+Tabler is recommended for interface elements and Simple Icons for brands and services.
 
-No se incorpora un wrapper Vue para la iconografía.
+No Vue icon wrapper is included.
 
-## Integración de Vue
+## Vue Integration
 
-Vue se integra mediante `@astrojs/vue`.
+Vue is integrated through `@astrojs/vue`.
 
-Astro permanece como framework principal y Vue se utiliza cuando una funcionalidad requiere estado reactivo, interacción o lógica de interfaz más compleja.
+Astro remains the primary framework, while Vue is used when a feature requires reactive state, interaction, or more complex interface logic.
 
-Las páginas estáticas no necesitan utilizar Vue.
+Static pages do not need Vue.
 
-### Islas de hidratación
+### Hydration Islands
 
-Los componentes Vue pueden hidratarse mediante directivas de cliente de Astro, como `client:load`.
+Vue components can be hydrated using Astro client directives, such as `client:load`.
 
-Es importante considerar que cada isla hidratada representa una aplicación Vue independiente.
+Each hydrated island represents an independent Vue application.
 
-Los mecanismos de contexto de Vue, como `Provide / Inject`, solamente comparten información dentro del árbol de componentes de una misma aplicación.
+Vue context mechanisms, such as `Provide / Inject`, only share information within the component tree of a single application.
 
-Por tanto, los componentes que necesitan compartir un contexto deben agruparse bajo un componente raíz Vue y recibir una única hidratación desde Astro.
+Therefore, components that need to share context must be grouped under a single Vue root component and hydrated once from Astro.
 
-Este comportamiento se utiliza en el módulo de autenticación.
+This behavior is used by the authentication module.
 
-Documentación: [Integración de Vue con Astro](https://docs.astro.build/en/guides/integrations-guide/vue/).
+Documentation: [Vue integration for Astro](https://docs.astro.build/en/guides/integrations-guide/vue/).
 
-## Módulo de autenticación
+## Authentication Module
 
-Ubicación: `src/modules/auth/`
+Location: `src/modules/auth/`
 
-VTAV incorpora un primer módulo de autenticación para demostrar la separación entre interfaz, estado y servicios.
+VTAV includes a reusable authentication module that demonstrates the separation between interface, state management, and service implementations.
 
-La implementación actual es local y está destinada exclusivamente a demostraciones y desarrollo frontend.
+The module supports local authentication for development and authentication through the NORA backend API.
 
-### Estructura
+### Structure
 
 ```text
 src/modules/auth/
@@ -462,68 +463,119 @@ src/modules/auth/
 ├── composables/
 │   └── useAuth.ts
 ├── services/
+│   ├── auth.api.ts
 │   └── auth.local.ts
 ├── types/
 │   └── auth.types.ts
 └── index.ts
 ```
 
-### Contrato de autenticación
+### Authentication Contract
 
-El módulo establece un contrato TypeScript independiente del proveedor:
+The module defines a TypeScript contract independent of the provider:
 
 ```ts
 export interface AuthCredentials {
-  email: string;
+  username: string;
   password: string;
 }
 
-export interface AuthUser {
-  id: string;
-  email: string;
-  name: string;
+export interface AuthSession {
+  accessToken: string;
+  tokenType: string;
+  expiresIn: string;
 }
 
 export interface AuthService {
-  login(credentials: AuthCredentials): Promise<AuthUser>;
+  login(credentials: AuthCredentials): Promise<AuthSession>;
 
-  getCurrentUser(): Promise<AuthUser | null>;
+  getCurrentSession(): Promise<AuthSession | null>;
 
   logout(): Promise<void>;
 }
 ```
 
-Las implementaciones de autenticación deben respetar este contrato.
+Authentication implementations must comply with this contract.
 
-De esta manera, los componentes de interfaz consumen operaciones comunes sin conocer los detalles de implementación.
+This allows interface components to consume common operations without knowing the implementation details.
 
-### Implementación local
+### Authentication Providers
 
-`LocalAuthService` implementa el contrato utilizando credenciales ficticias y un estado de sesión en memoria.
+The module includes two service implementations.
 
-Credenciales de demostración:
+#### ApiAuthService
 
-| Campo      | Valor           |
-| ---------- | --------------- |
-| Email      | `demo@vtav.dev` |
-| Contraseña | `vtav-demo`     |
+`ApiAuthService` authenticates users through the NORA backend API.
 
-El servicio permite:
+It implements the `AuthService` contract and communicates with the backend through HTTP.
 
-- Iniciar sesión.
-- Consultar la sesión actual.
-- Cerrar sesión.
-- Simular errores por credenciales incorrectas.
+The current login endpoint is:
 
-La sesión no se persiste. Al recargar la página, el usuario debe iniciar sesión nuevamente.
+`POST /auth/login`
 
-### Estado compartido
+Request body:
 
-`useAuth.ts` administra el estado reactivo mediante Vue y utiliza `Provide / Inject` para compartirlo entre los componentes descendientes.
+```json
+{
+  "username": "string",
+  "password": "string"
+}
+```
 
-El contexto expone:
+Successful response:
 
-- `user`
+```json
+{
+  "status": "success",
+  "data": {
+    "accessToken": "JWT",
+    "tokenType": "Bearer",
+    "expiresIn": "15m"
+  }
+}
+```
+
+The `expiresIn` value is determined by the backend configuration.
+
+The service validates the HTTP response and the expected authentication response structure before storing the session.
+
+#### LocalAuthService
+
+`LocalAuthService` provides a local authentication implementation for development and isolated interface demonstrations.
+
+It uses fictitious credentials and an in-memory session.
+
+Demonstration credentials:
+
+| Field    | Value       |
+| -------- | ----------- |
+| Username | `demo`      |
+| Password | `vtav-demo` |
+
+The service supports:
+
+- Login.
+- Current session retrieval.
+- Logout.
+- Invalid credential simulation.
+
+This implementation does not provide real authentication or security and must never be used to protect production resources.
+
+### Provider Selection
+
+`AuthProvider.vue` initializes the authentication context and accepts an optional `AuthService` implementation.
+
+When no service is explicitly provided, it uses `ApiAuthService`.
+
+This makes NORA the default authentication provider while preserving the option to inject `LocalAuthService` for local development or demonstrations.
+
+### Shared Authentication State
+
+`useAuth.ts` manages reactive state through Vue and uses `Provide / Inject` to share it with descendant components.
+
+The context exposes:
+
+- `session`
 - `isAuthenticated`
 - `isLoading`
 - `error`
@@ -531,114 +583,168 @@ El contexto expone:
 - `logout()`
 - `checkSession()`
 
-`AuthProvider.vue` inicializa el contexto y permite inyectar una implementación de `AuthService`.
+`LoginForm.vue` consumes the authentication context without depending directly on a specific service implementation.
 
-`LoginForm.vue` consume el contexto sin depender directamente de `LocalAuthService`.
+`AuthDemo.vue` groups the provider and login form under a single Vue application, allowing them to share the same context.
 
-### Integración futura con API
+### Environment Configuration
 
-La arquitectura está preparada para incorporar una implementación que consuma un backend mediante HTTP.
+The NORA API URL is configured through an environment variable.
 
-El objetivo es que la interfaz mantenga el mismo contrato mientras se sustituye la implementación local por un adaptador de API.
+Create a local `.env` file in the project root using `.env.example` as a reference:
 
-Esta integración todavía está pendiente y dependerá del diseño del backend NORA.
+```env
+PUBLIC_NORA_API_URL=https://your-nora-api.example.com
+```
 
-La autenticación real, la autorización y la gestión de sesiones deberán resolverse en el servidor. La implementación futura deberá contemplar mecanismos seguros, como cookies `HttpOnly`, cuando correspondan.
+The current development configuration uses:
 
-**Importante:** el servicio local y sus credenciales no constituyen un mecanismo de seguridad. No deben utilizarse para proteger información ni recursos reales.
+```env
+PUBLIC_NORA_API_URL=https://nora-api.notaria57cdmx.com
+```
 
-## Convenciones de desarrollo
+`PUBLIC_NORA_API_URL` is exposed to the browser because the frontend needs to send HTTP requests directly to the API.
 
-### Organización del código
+**Important:** Never place usernames, passwords, API secrets, private keys, or other sensitive credentials in `PUBLIC_` environment variables. Values using this prefix are included in the client-side application.
 
-- Mantener separados `data`, `content` y `modules`.
-- Evitar duplicar información entre estas áreas.
-- Incorporar módulos de forma progresiva.
-- Exponer las funcionalidades públicas de cada módulo mediante `index.ts`.
-- Utilizar contratos TypeScript para desacoplar servicios e implementaciones.
-- Mantener Astro como responsable de la estructura de páginas y layouts.
-- Incorporar Vue únicamente cuando exista una necesidad de interactividad.
+The local `.env` file must remain excluded from version control.
 
-### Estilos y componentes
+### Session Handling and Security Considerations
 
-- Consumir tokens semánticos de VTAV.
-- Mantener compatibilidad con los modos Light y Dark.
-- Priorizar componentes pequeños y reutilizables.
-- Considerar accesibilidad y estados de interacción desde su implementación.
-- Evitar estilos independientes cuando existan tokens o componentes compartidos apropiados.
+The current API authentication implementation stores the returned JWT exclusively in JavaScript memory.
 
-### Gestión de dependencias
+Consequently:
 
-- Utilizar pnpm para instalar, actualizar y ejecutar dependencias.
-- Mantener sincronizados `package.json` y `pnpm-lock.yaml`.
-- Evitar incorporar dependencias que no tengan una justificación técnica.
+- The token is not persisted in `localStorage` or `sessionStorage`.
+- Reloading the page clears the in-memory session.
+- Closing the session clears the current token.
+- The frontend does not receive user profile information from the current NORA authentication response.
 
-### Control de versiones
+The current module establishes the login flow and reusable authentication contract. It does not yet implement a complete authorization workflow or verify access to protected backend resources.
 
-Actualmente, `develop` es la rama de trabajo del proyecto.
+The backend remains responsible for credential validation, token issuance, authorization, and resource protection.
 
-El flujo previsto contempla:
+For stronger production session security, a backend-for-frontend architecture or an appropriate `HttpOnly`, `Secure`, and `SameSite` cookie-based strategy may be considered.
 
-- `develop`: desarrollo continuo.
-- `main`: versiones estables y liberadas.
-- Pull Requests desde `develop` hacia `main` para promover versiones.
-- Etiquetas Git siguiendo Semantic Versioning para identificar las versiones publicadas.
+CORS configuration is handled by the backend and must explicitly allow the frontend origin.
 
-La rama `main` y el procedimiento formal de liberación están pendientes de configuración.
+## NORA Backend Integration
 
-## Estado y próximos pasos
+VTAV is designed to integrate with NORA, a reusable backend boilerplate built with Node.js, Fastify, and Microsoft SQL Server.
 
-### Implementado y verificado
+The current integration uses NORA's authentication endpoint.
 
-- [x] Inicializar el proyecto con la plantilla minimalista de Astro.
-- [x] Configurar Git y la rama de trabajo `develop`.
-- [x] Instalar y configurar Tailwind CSS v4 mediante Vite.
-- [x] Incorporar Vue 3 como integración de Astro.
-- [x] Incorporar TypeScript.
-- [x] Crear la entrada global de estilos.
-- [x] Incorporar tokens tipográficos semánticos.
-- [x] Incorporar escalas tipográficas.
-- [x] Definir tokens de color semánticos y modos Light/Dark.
-- [x] Registrar fuentes locales.
-- [x] Configurar Astro Icon con Tabler y Simple Icons.
-- [x] Implementar `Layout.astro`.
-- [x] Implementar `Container.astro`.
-- [x] Implementar `Button.vue` y sus variantes.
-- [x] Incorporar ejemplos funcionales de componentes en la página principal.
-- [x] Definir la separación arquitectónica `data / content / modules`.
-- [x] Configurar Astro Content Collections.
-- [x] Crear la colección inicial `blog`.
-- [x] Implementar la página de demostración `/blog`.
-- [x] Establecer el contrato TypeScript `AuthService`.
-- [x] Implementar `LocalAuthService`.
-- [x] Implementar el composable `useAuth()`.
-- [x] Implementar `AuthProvider.vue`.
-- [x] Implementar `LoginForm.vue`.
-- [x] Implementar la demostración de autenticación `/login`.
-- [x] Validar login, logout, errores y estado de sesión en memoria.
-- [x] Verificar la compilación de producción mediante `pnpm build`.
+Responsibilities are separated as follows:
 
-### Pendiente
+| Layer            | Responsibility                             |
+| ---------------- | ------------------------------------------ |
+| VTAV             | User interface and authentication state    |
+| `ApiAuthService` | HTTP communication and response validation |
+| NORA             | Credential validation and JWT issuance     |
+| SQL Server       | Backend data persistence                   |
 
-- [ ] Crear la rama `main`.
-- [ ] Configurar el procedimiento de liberación mediante Pull Requests.
-- [ ] Incorporar etiquetas de versión SemVer.
-- [ ] Completar ejemplos de configuración general en `src/data/`.
-- [ ] Evaluar y registrar nuevas colecciones editoriales cuando existan casos de uso.
-- [ ] Ampliar progresivamente la biblioteca de componentes UI.
-- [ ] Incorporar otros módulos funcionales según las necesidades de los proyectos.
-- [ ] Diseñar e implementar el adaptador de autenticación mediante API.
-- [ ] Integrar el frontend con el backend NORA.
-- [ ] Evaluar validaciones de calidad y herramientas adicionales de comprobación.
+VTAV does not contain backend credentials or database connection details.
 
-## Documentación oficial
+The API URL is configured through `PUBLIC_NORA_API_URL`, while backend authentication credentials and database settings remain exclusively on the server.
+
+The integration is intentionally limited to the authentication flow. Application-specific functionality and protected resource consumption belong to derived projects and future development stages.
+
+## Development Conventions
+
+### Code Organization
+
+- Keep `data`, `content`, and `modules` separate.
+- Avoid duplicating information between these areas.
+- Introduce modules progressively.
+- Expose module functionality through `index.ts`.
+- Use TypeScript contracts to decouple services and implementations.
+- Keep Astro responsible for page and layout structure.
+- Introduce Vue only when interactivity requires it.
+
+### Styles and Components
+
+- Consume VTAV semantic design tokens.
+- Maintain compatibility with Light and Dark modes.
+- Prioritize small and reusable components.
+- Consider accessibility and interaction states from the beginning.
+- Avoid independent styles when appropriate shared tokens or components already exist.
+
+### Dependency Management
+
+- Use pnpm to install, update, and execute dependencies.
+- Keep `package.json` and `pnpm-lock.yaml` synchronized.
+- Avoid adding dependencies without a technical justification.
+
+### Version Control
+
+The `develop` branch is currently used for ongoing development.
+
+The planned workflow includes:
+
+- `develop`: Continuous development.
+- `main`: Stable and released versions.
+- Pull Requests from `develop` to `main` to promote versions.
+- Git tags following Semantic Versioning to identify published releases.
+
+The `main` branch and formal release procedure are still pending configuration.
+
+## Project Status and Roadmap
+
+### Implemented and Verified
+
+- [x] Initialize the project using the minimal Astro template.
+- [x] Configure Git and the `develop` working branch.
+- [x] Install and configure Tailwind CSS v4 through Vite.
+- [x] Integrate Vue 3 with Astro.
+- [x] Incorporate TypeScript.
+- [x] Create the global stylesheet entry point.
+- [x] Introduce semantic typography tokens.
+- [x] Define typographic scales.
+- [x] Define semantic color tokens and Light/Dark modes.
+- [x] Register local fonts.
+- [x] Configure Astro Icon with Tabler and Simple Icons.
+- [x] Implement `Layout.astro`.
+- [x] Implement `Container.astro`.
+- [x] Implement `Button.vue` and its variants.
+- [x] Add functional component demonstrations to the main page.
+- [x] Define the `data / content / modules` architectural separation.
+- [x] Configure Astro Content Collections.
+- [x] Create the initial `blog` collection.
+- [x] Implement the `/blog` demonstration page.
+- [x] Define the TypeScript `AuthService` contract.
+- [x] Implement `LocalAuthService`.
+- [x] Implement `ApiAuthService`.
+- [x] Implement the reactive `useAuth()` composable.
+- [x] Implement `AuthProvider.vue`.
+- [x] Implement `LoginForm.vue`.
+- [x] Implement the `/login` authentication demonstration.
+- [x] Integrate the login flow with the NORA backend API.
+- [x] Validate successful authentication against the NORA API.
+- [x] Validate logout and in-memory session handling.
+- [x] Verify the production build using `pnpm build`.
+
+### Pending
+
+- [ ] Create the `main` branch.
+- [ ] Configure the release process through Pull Requests.
+- [ ] Establish Semantic Versioning release tags.
+- [ ] Complete general application configuration examples in `src/data/`.
+- [ ] Evaluate and register additional editorial collections when use cases arise.
+- [ ] Expand the UI component library progressively.
+- [ ] Introduce additional functional modules according to project requirements.
+- [ ] Implement protected-resource consumption using the issued JWT.
+- [ ] Evaluate a more robust production session architecture.
+- [ ] Expand authentication and authorization capabilities as backend requirements evolve.
+- [ ] Introduce additional quality validation tools when compatible with the installed toolchain.
+
+## Official Documentation
 
 - [Astro](https://docs.astro.build/)
-- [Configuración de Astro](https://docs.astro.build/en/reference/configuration-reference/)
+- [Astro Configuration](https://docs.astro.build/en/reference/configuration-reference/)
 - [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
-- [Integración de Vue con Astro](https://docs.astro.build/en/guides/integrations-guide/vue/)
+- [Astro Vue Integration](https://docs.astro.build/en/guides/integrations-guide/vue/)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
-- [Plugin de Tailwind CSS para Vite](https://tailwindcss.com/docs/installation/using-vite)
+- [Tailwind CSS Vite Plugin](https://tailwindcss.com/docs/installation/using-vite)
 - [Vite](https://vite.dev/guide/)
 - [Vue](https://vuejs.org/)
 - [TypeScript](https://www.typescriptlang.org/docs/)
@@ -646,4 +752,4 @@ La rama `main` y el procedimiento formal de liberación están pendientes de con
 
 ---
 
-VTAV evoluciona mediante decisiones arquitectónicas explícitas y verificables. Su objetivo no es imponer una estructura rígida a todos los proyectos, sino proporcionar una base técnica reutilizable que pueda crecer progresivamente sin perder consistencia, modularidad ni independencia entre sus componentes y servicios.
+VTAV evolves through explicit and verifiable architectural decisions. Its purpose is not to impose a rigid structure on every project, but to provide a reusable technical foundation that can grow progressively without losing consistency, modularity, or independence between its components and services.
