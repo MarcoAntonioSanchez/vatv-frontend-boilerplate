@@ -2,18 +2,20 @@
  * Credenciales necesarias para iniciar sesión.
  */
 export interface AuthCredentials {
-  email: string;
+  username: string;
   password: string;
 }
 
 /**
- * Información pública del usuario autenticado.
- * No incluye contraseñas ni tokens de autenticación.
+ * Sesión devuelta por el proveedor de autenticación.
+ *
+ * Representa la respuesta de autenticación de NORA.
+ * No incluye información de perfil del usuario.
  */
-export interface AuthUser {
-  id: string;
-  email: string;
-  name: string;
+export interface AuthSession {
+  accessToken: string;
+  tokenType: string;
+  expiresIn: string;
 }
 
 /**
@@ -21,9 +23,9 @@ export interface AuthUser {
  * Las implementaciones local y API deberán respetarlo.
  */
 export interface AuthService {
-  login(credentials: AuthCredentials): Promise<AuthUser>;
+  login(credentials: AuthCredentials): Promise<AuthSession>;
 
-  getCurrentUser(): Promise<AuthUser | null>;
+  getCurrentSession(): Promise<AuthSession | null>;
 
   logout(): Promise<void>;
 }

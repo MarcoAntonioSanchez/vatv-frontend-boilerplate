@@ -1,26 +1,26 @@
 import type {
   AuthCredentials,
   AuthService,
-  AuthUser,
+  AuthSession,
 } from "../types/auth.types";
 
 /**
- * Usuario ficticio para probar el flujo de autenticación.
+ * Sesión ficticia para probar el flujo de autenticación.
  *
  * Estas credenciales son exclusivamente demostrativas.
  * Nunca deben utilizarse como mecanismo de seguridad real.
  */
-const DEMO_USER: AuthUser = {
-  id: "demo-user-001",
-  email: "demo@vtav.dev",
-  name: "Usuario Demo",
+const DEMO_SESSION: AuthSession = {
+  accessToken: "demo-token-vtav",
+  tokenType: "Bearer",
+  expiresIn: "15m",
 };
 
 /**
  * Credenciales ficticias para el entorno local.
  */
 const DEMO_CREDENTIALS: AuthCredentials = {
-  email: "demo@vtav.dev",
+  username: "demo",
   password: "vtav-demo",
 };
 
@@ -34,36 +34,36 @@ export class LocalAuthService implements AuthService {
   /**
    * Estado de autenticación en memoria.
    */
-  private currentUser: AuthUser | null = null;
+  private currentSession: AuthSession | null = null;
 
   /**
    * Simula el inicio de sesión.
    */
-  async login(credentials: AuthCredentials): Promise<AuthUser> {
+  async login(credentials: AuthCredentials): Promise<AuthSession> {
     const isValid =
-      credentials.email === DEMO_CREDENTIALS.email &&
+      credentials.username === DEMO_CREDENTIALS.username &&
       credentials.password === DEMO_CREDENTIALS.password;
 
     if (!isValid) {
       throw new Error("Credenciales incorrectas.");
     }
 
-    this.currentUser = { ...DEMO_USER };
+    this.currentSession = { ...DEMO_SESSION };
 
-    return this.currentUser;
+    return this.currentSession;
   }
 
   /**
-   * Recupera el usuario de la sesión actual.
+   * Recupera la sesión actual.
    */
-  async getCurrentUser(): Promise<AuthUser | null> {
-    return this.currentUser;
+  async getCurrentSession(): Promise<AuthSession | null> {
+    return this.currentSession;
   }
 
   /**
    * Finaliza la sesión actual.
    */
   async logout(): Promise<void> {
-    this.currentUser = null;
+    this.currentSession = null;
   }
 }

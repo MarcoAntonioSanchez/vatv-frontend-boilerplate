@@ -11,7 +11,7 @@ import {
 import type {
   AuthCredentials,
   AuthService,
-  AuthUser,
+  AuthSession,
 } from "../types/auth.types";
 
 import { LocalAuthService } from "../services/auth.local";
@@ -21,7 +21,7 @@ import { LocalAuthService } from "../services/auth.local";
  * que consuman el módulo de autenticación.
  */
 interface AuthContext {
-  user: Readonly<Ref<AuthUser | null>>;
+  session: Readonly<Ref<AuthSession | null>>;
   isAuthenticated: ComputedRef<boolean>;
   isLoading: Readonly<Ref<boolean>>;
   error: Readonly<Ref<string | null>>;
@@ -40,18 +40,15 @@ const AUTH_KEY: InjectionKey<AuthContext> = Symbol("AuthContext");
 /**
  * Inicializa el estado de autenticación y lo proporciona
  * a los componentes descendientes.
- *
- * Recibe un servicio intercambiable. Por defecto utiliza
- * la implementación local de demostración.
  */
 export function provideAuth(
   authService: AuthService = new LocalAuthService(),
 ): void {
-  const user = ref<AuthUser | null>(null);
+  const session = ref<AuthSession | null>(null);
   const isLoading = ref(false);
   const error = ref<string | null>(null);
 
-  const isAuthenticated = computed(() => user.value !== null);
+  const isAuthenticated = computed(() => session.value !== null);
 
   /**
    * Inicia una sesión mediante el servicio configurado.
@@ -61,12 +58,12 @@ export function provideAuth(
     error.value = null;
 
     try {
-      user.value = await authService.login(credentials);
+      session.value = await authService.login(credentials);
     } catch (err) {
       error.value =
         err instanceof Error ? err.message : "No fue posible iniciar sesión.";
 
-      user.value = null;
+      session.value = null;
     } finally {
       isLoading.value = false;
     }
@@ -81,7 +78,7 @@ export function provideAuth(
 
     try {
       await authService.logout();
-      user.value = null;
+      session.value = null;
     } catch (err) {
       error.value =
         err instanceof Error ? err.message : "No fue posible cerrar la sesión.";
@@ -98,21 +95,21 @@ export function provideAuth(
     error.value = null;
 
     try {
-      user.value = await authService.getCurrentUser();
+      session.value = await authService.getCurrentSession();
     } catch (err) {
       error.value =
         err instanceof Error
           ? err.message
           : "No fue posible consultar la sesión.";
 
-      user.value = null;
+      session.value = null;
     } finally {
       isLoading.value = false;
     }
   }
 
   provide(AUTH_KEY, {
-    user,
+    session,
     isAuthenticated,
     isLoading,
     error,

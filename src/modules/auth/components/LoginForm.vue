@@ -8,22 +8,28 @@ import { useAuth } from "../composables/useAuth";
  * Consume el contexto de autenticación proporcionado
  * por AuthProvider.
  */
-const { user, isAuthenticated, isLoading, error, login, logout } = useAuth();
+const { session, isAuthenticated, isLoading, error, login, logout } = useAuth();
 
 /**
  * Estado local de los campos del formulario.
+ *
+ * Los campos comienzan vacíos para evitar exponer
+ * credenciales de demostración.
  */
-const email = ref("demo@vtav.dev");
-const password = ref("vtav-demo");
+const username = ref("");
+const password = ref("");
 
 /**
  * Procesa el envío del formulario.
  */
 async function handleSubmit(): Promise<void> {
   await login({
-    email: email.value,
+    username: username.value,
     password: password.value,
   });
+
+  // Limpia la contraseña después del intento de autenticación.
+  password.value = "";
 }
 </script>
 
@@ -39,11 +45,26 @@ async function handleSubmit(): Promise<void> {
         <span aria-hidden="true">✓</span>
       </div>
 
-      <h2 class="font-heading text-h3 text-text">¡Bienvenido!</h2>
+      <h2 class="font-heading text-h3 text-text">¡Autenticación exitosa!</h2>
 
       <p class="text-body text-text-muted">
-        Has iniciado sesión como {{ user?.name }}.
+        La API NORA ha validado tus credenciales.
       </p>
+
+      <div
+        v-if="session"
+        class="space-y-2 rounded-lg bg-background p-4 text-left"
+      >
+        <p class="text-body-sm text-text-muted">
+          Tipo de token:
+          <span class="font-medium text-text">{{ session.tokenType }}</span>
+        </p>
+
+        <p class="text-body-sm text-text-muted">
+          Expiración:
+          <span class="font-medium text-text">{{ session.expiresIn }}</span>
+        </p>
+      </div>
 
       <Button
         type="button"
@@ -68,16 +89,18 @@ async function handleSubmit(): Promise<void> {
       </header>
 
       <div class="space-y-2">
-        <label for="auth-email" class="text-body-sm font-medium text-text">
-          Correo electrónico
+        <label for="auth-username" class="text-body-sm font-medium text-text">
+          Nombre de usuario
         </label>
 
         <input
-          id="auth-email"
-          v-model.trim="email"
-          type="email"
+          id="auth-username"
+          v-model.trim="username"
+          type="text"
           autocomplete="username"
-          placeholder="nombre@ejemplo.com"
+          placeholder="Ingresa tu usuario"
+          minlength="3"
+          maxlength="100"
           required
           :disabled="isLoading"
           class="w-full rounded-lg border border-border bg-background px-4 py-3 text-body text-text placeholder:text-text-muted outline-none transition focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 disabled:cursor-not-allowed disabled:opacity-60"
@@ -95,6 +118,7 @@ async function handleSubmit(): Promise<void> {
           type="password"
           autocomplete="current-password"
           placeholder="Ingresa tu contraseña"
+          maxlength="128"
           required
           :disabled="isLoading"
           class="w-full rounded-lg border border-border bg-background px-4 py-3 text-body text-text placeholder:text-text-muted outline-none transition focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 disabled:cursor-not-allowed disabled:opacity-60"
@@ -114,7 +138,7 @@ async function handleSubmit(): Promise<void> {
         type="submit"
         variant="solid"
         :loading="isLoading"
-        :disabled="isLoading || !email || !password"
+        :disabled="isLoading || !username.trim() || !password"
         class="w-full"
       >
         Iniciar sesión
